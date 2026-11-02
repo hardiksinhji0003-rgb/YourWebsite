@@ -1,0 +1,58 @@
+import { CollectionItem } from '../types';
+
+export const COLLECTIONS_DATA: CollectionItem[] = [
+  {
+    id: 'silver-necklaces',
+    title: 'Silver Necklaces',
+    subtitle: 'Graceful collars, layered chokers & statement strands',
+    categoryKey: 'Silver Necklaces',
+    image: '/src/assets/images/hero_silver_jewellery_1793629452235.jpg',
+    itemCount: 18,
+    tagline: 'Pure 925 Silver Necklaces crafted to adorn every neckline with effortless radiance.',
+  },
+  {
+    id: 'silver-pendants',
+    title: 'Silver Pendants',
+    subtitle: 'Intricate filigree medallions & contemporary amulets',
+    categoryKey: 'Silver Pendants',
+    image: '/src/assets/images/silver_necklaces_pendant_1793629454825.jpg',
+    itemCount: 24,
+    tagline: 'Artisanal 925 Silver pendants engraved with timeless motifs.',
+  },
+  {
+    id: 'silver-rings',
+    title: 'Silver Rings',
+    subtitle: 'Sculpted bands, signets & moissanite solitaires',
+    categoryKey: 'Silver Rings',
+    image: '/src/assets/images/silver_rings_showcase_1793629453987.jpg',
+    itemCount: 32,
+    tagline: 'Comfort-fit 925 Silver rings designed for daily elegance.',
+  },
+  {
+    id: 'silver-earrings',
+    title: 'Silver Earrings',
+    subtitle: 'Textured hoops, drops & traditional jhumkis',
+    categoryKey: 'Silver Earrings',
+    image: '/src/assets/images/hero_silver_jewellery_1793629452235.jpg',
+    itemCount: 28,
+    tagline: 'Lightweight hallmarked silver earrings for celebrations and everyday grace.',
+  },
+  {
+    id: 'silver-chains',
+    title: 'Silver Chains',
+    subtitle: 'Diamond-cut curb, figaro, rope & box links',
+    categoryKey: 'Silver Chains',
+    image: '/src/assets/images/silver_necklaces_pendant_1793629454825.jpg',
+    itemCount: 16,
+    tagline: 'Heavy gauge, precision-finished 925 sterling silver chains for men and women.',
+  },
+  {
+    id: 'custom-jewellery',
+    title: 'Custom Jewellery',
+    subtitle: 'Bespoke commissions handcrafted from your sketches',
+    categoryKey: 'Custom Jewellery',
+    image: '/src/assets/images/custom_silver_jewellery_1793629453356.jpg',
+    itemCount: 12,
+    tagline: 'Turn your imagination into heirloom silver with our master silversmiths.',
+  },
+];
