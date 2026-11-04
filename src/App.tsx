@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { LanguageProvider } from './context/LanguageContext';
 import { ShopProvider } from './context/ShopContext';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
@@ -26,53 +27,55 @@ import { NotificationToast } from './components/NotificationToast';
 
 export default function App() {
   return (
-    <ShopProvider>
-      <div className="min-h-screen bg-[#F8F5EF] text-[#202020] flex flex-col selection:bg-[#E4D1A3] selection:text-[#171717]">
-        {/* Sticky Header with Navigation */}
-        <Header />
+    <LanguageProvider>
+      <ShopProvider>
+        <div className="min-h-screen bg-[#F8F5EF] text-[#202020] flex flex-col selection:bg-[#E4D1A3] selection:text-[#171717]">
+          {/* Sticky Header with Navigation */}
+          <Header />
 
-        {/* Main Content Sections */}
-        <main className="flex-grow">
-          {/* 1. Hero Section */}
-          <Hero />
+          {/* Main Content Sections */}
+          <main className="flex-grow">
+            {/* 1. Hero Section */}
+            <Hero />
 
-          {/* 2. Shop By Collection */}
-          <Collections />
+            {/* 2. Shop By Collection */}
+            <Collections />
 
-          {/* 3. Featured Products & Best Sellers Catalog */}
-          <ProductCatalog />
+            {/* 3. Featured Products & Best Sellers Catalog */}
+            <ProductCatalog />
 
-          {/* 4. Brand Story & Craftsmanship */}
-          <BrandStory />
+            {/* 4. Brand Story & Craftsmanship */}
+            <BrandStory />
 
-          {/* 5. Why Choose Gujarat Orna (Dark Charcoal Section) */}
-          <WhyChooseUs />
+            {/* 5. Why Choose Gujarat Orna (Dark Charcoal Section) */}
+            <WhyChooseUs />
 
-          {/* 6. Custom Jewellery Atelier */}
-          <CustomJewellery />
+            {/* 6. Custom Jewellery Atelier */}
+            <CustomJewellery />
 
-          {/* 7. Instagram Story Gallery */}
-          <InstagramGallery />
+            {/* 7. Instagram Story Gallery */}
+            <InstagramGallery />
 
-          {/* 8. Customer Testimonials */}
-          <Testimonials />
+            {/* 8. Customer Testimonials */}
+            <Testimonials />
 
-          {/* 9. Contact Section & Interactive Enquiry Form */}
-          <ContactSection />
-        </main>
+            {/* 9. Contact Section & Interactive Enquiry Form */}
+            <ContactSection />
+          </main>
 
-        {/* 10. Luxury Dark Footer */}
-        <Footer />
+          {/* 10. Luxury Dark Footer */}
+          <Footer />
 
-        {/* Interactive Drawers, Modals & Micro-interactions */}
-        <CartDrawer />
-        <WishlistDrawer />
-        <QuickViewModal />
-        <CustomJewelleryModal />
-        <StoryModal />
-        <NotificationToast />
-        <BackToTop />
-      </div>
-    </ShopProvider>
+          {/* Interactive Drawers, Modals & Micro-interactions */}
+          <CartDrawer />
+          <WishlistDrawer />
+          <QuickViewModal />
+          <CustomJewelleryModal />
+          <StoryModal />
+          <NotificationToast />
+          <BackToTop />
+        </div>
+      </ShopProvider>
+    </LanguageProvider>
   );
 }

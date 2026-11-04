@@ -1,5 +1,14 @@
 import { Product } from '../types';
 
+import prodMandalaImg from '../assets/images/prod_mandala_pendant_macro_1793634779389.jpg';
+import prodSignetImg from '../assets/images/silver_rings_showcase_1793629453987.jpg';
+import prodChokerImg from '../assets/images/prod_silver_choker_1793634685439.jpg';
+import prodRoyalAmuletImg from '../assets/images/prod_royal_amulet_1793634710973.jpg';
+import prodCurbChainImg from '../assets/images/prod_curb_chain_1793634687196.jpg';
+import prodStackingBandsImg from '../assets/images/prod_stacking_bands_1793634711646.jpg';
+import prodMoonJhumkisImg from '../assets/images/prod_moon_jhumkis_1793634667339.jpg';
+import prodFloralLocketImg from '../assets/images/prod_floral_locket_1793634685165.jpg';
+
 export const SAMPLE_PRODUCTS: Product[] = [
   {
     id: 'go-925-01',
@@ -7,7 +16,7 @@ export const SAMPLE_PRODUCTS: Product[] = [
     category: 'Silver Pendants',
     price: 3850,
     originalPrice: 4500,
-    image: '/src/assets/images/silver_necklaces_pendant_1793629454825.jpg',
+    image: prodMandalaImg,
     description: 'A masterfully engraved Pure 925 Sterling Silver medallion pendant showcasing traditional Gujarat filigree geometry with an oxidized antique finish.',
     purity: 'Pure 925 Sterling Silver',
     hallmark: '925 Hallmarked',
@@ -24,7 +33,7 @@ export const SAMPLE_PRODUCTS: Product[] = [
     category: 'Silver Rings',
     price: 2450,
     originalPrice: 2900,
-    image: '/src/assets/images/silver_rings_showcase_1793629453987.jpg',
+    image: prodSignetImg,
     description: 'Hand-hammered organic faceted pure 925 silver signet ring with mirror-polished bevels and a solid comfort-band shank.',
     purity: 'Pure 925 Sterling Silver',
     hallmark: '925 Hallmarked',
@@ -41,7 +50,7 @@ export const SAMPLE_PRODUCTS: Product[] = [
     category: 'Silver Necklaces',
     price: 8900,
     originalPrice: 10500,
-    image: '/src/assets/images/hero_silver_jewellery_1793629452235.jpg',
+    image: prodChokerImg,
     description: 'Bold articulated 925 silver sculptural collar crafted with hand-beaten links and a bespoke dual-safety silversmith clasp.',
     purity: 'Pure 925 Sterling Silver',
     hallmark: '925 Hallmarked',
@@ -57,7 +66,7 @@ export const SAMPLE_PRODUCTS: Product[] = [
     name: 'Bespoke Royal Heritage Amulet',
     category: 'Custom Jewellery',
     price: 12500,
-    image: '/src/assets/images/custom_silver_jewellery_1793629453356.jpg',
+    image: prodRoyalAmuletImg,
     description: 'Custom handcrafted talisman carved from individual client sketches, featuring dual-tone rhodium/silver finish and bespoke engraving.',
     purity: 'Pure 925 Sterling Silver (Custom Alloy)',
     hallmark: '925 Custom Stamped',
@@ -74,7 +83,7 @@ export const SAMPLE_PRODUCTS: Product[] = [
     category: 'Silver Chains',
     price: 4950,
     originalPrice: 5800,
-    image: '/src/assets/images/silver_necklaces_pendant_1793629454825.jpg',
+    image: prodCurbChainImg,
     description: 'Precision Italian diamond-cut pure 925 sterling silver curb chain with high light-refraction facets and heavy-duty lobster clasp.',
     purity: 'Pure 925 Sterling Silver',
     hallmark: '925 Hallmarked',
@@ -91,7 +100,7 @@ export const SAMPLE_PRODUCTS: Product[] = [
     category: 'Silver Rings',
     price: 3200,
     originalPrice: 3800,
-    image: '/src/assets/images/silver_rings_showcase_1793629453987.jpg',
+    image: prodStackingBandsImg,
     description: 'Trio of interlocking minimalist pure 925 silver bands with contrasting satin brushed, hammered, and polished surface textures.',
     purity: 'Pure 925 Sterling Silver',
     hallmark: '925 Hallmarked',
@@ -108,7 +117,7 @@ export const SAMPLE_PRODUCTS: Product[] = [
     category: 'Silver Earrings',
     price: 4400,
     originalPrice: 5100,
-    image: '/src/assets/images/hero_silver_jewellery_1793629452235.jpg',
+    image: prodMoonJhumkisImg,
     description: 'Lightweight pure 925 silver drop earrings with crescent filigree wirework, ghungroo bells, and hypo-allergenic silver ear-wires.',
     purity: 'Pure 925 Sterling Silver',
     hallmark: '925 Hallmarked',
@@ -125,7 +134,7 @@ export const SAMPLE_PRODUCTS: Product[] = [
     category: 'Silver Pendants',
     price: 3600,
     originalPrice: 4200,
-    image: '/src/assets/images/silver_necklaces_pendant_1793629454825.jpg',
+    image: prodFloralLocketImg,
     description: 'Vintage keepsake opening locket crafted in 925 silver with hand-chiseled flower vine motifs and dual internal photo recesses.',
     purity: 'Pure 925 Sterling Silver',
     hallmark: '925 Hallmarked',

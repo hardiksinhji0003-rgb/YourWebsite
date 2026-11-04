@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { X, MessageCircle, Sparkles, CheckCircle2 } from 'lucide-react';
+import { X, MessageCircle, Sparkles } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
+import { useLanguage } from '../context/LanguageContext';
 import { getCustomJewelleryWhatsAppUrl } from '../data/businessConfig';
 
 export const CustomJewelleryModal: React.FC = () => {
   const { isCustomModalOpen, setIsCustomModalOpen } = useShop();
+  const { t } = useLanguage();
 
-  const [jewelleryType, setJewelleryType] = useState('Custom 925 Silver Pendant');
-  const [targetWeight, setTargetWeight] = useState('10 - 20 grams');
+  const [jewelleryType, setJewelleryType] = useState('Custom 925 Silver Pendant / Locket');
+  const [targetWeight, setTargetWeight] = useState('Medium (10 - 25 grams)');
   const [engraving, setEngraving] = useState('');
   const [notes, setNotes] = useState('');
 
@@ -40,7 +42,7 @@ export const CustomJewelleryModal: React.FC = () => {
           <button
             type="button"
             onClick={() => setIsCustomModalOpen(false)}
-            className="absolute top-4 right-4 text-[#AAAAAA] hover:text-white p-1 rounded-full transition-colors"
+            className="absolute top-4 right-4 text-[#AAAAAA] hover:text-white p-1 rounded-full transition-colors cursor-pointer"
             aria-label="Close custom modal"
           >
             <X className="w-5 h-5" />
@@ -48,14 +50,14 @@ export const CustomJewelleryModal: React.FC = () => {
 
           <div className="flex items-center gap-2 text-[#E4D1A3] text-xs uppercase tracking-widest font-semibold mb-1">
             <Sparkles className="w-4 h-4 text-[#C6A15B]" />
-            <span>Gujarat Orna Bespoke Atelier</span>
+            <span>{t.customModal.badge}</span>
           </div>
 
           <h3 className="font-serif text-2xl text-white font-normal">
-            Commission Custom 925 Silver Jewellery
+            {t.customModal.title}
           </h3>
           <p className="text-xs text-[#AAAAAA] mt-1 font-light">
-            Share your design ideas and connect directly with our Dahegam silversmiths.
+            {t.customModal.subtitle}
           </p>
         </div>
 
@@ -64,47 +66,47 @@ export const CustomJewelleryModal: React.FC = () => {
           
           <div>
             <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] mb-1">
-              Jewellery Piece Type
+              {t.customModal.typeLabel}
             </label>
             <select
               value={jewelleryType}
               onChange={(e) => setJewelleryType(e.target.value)}
               className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] border border-[#E4D1A3] rounded text-[#171717] focus:outline-none focus:border-[#C6A15B]"
             >
-              <option value="Custom 925 Silver Pendant">Custom 925 Silver Pendant / Locket</option>
-              <option value="Custom 925 Silver Signet / Band Ring">Custom 925 Silver Signet / Band Ring</option>
-              <option value="Custom 925 Silver Statement Necklace">Custom 925 Silver Statement Necklace</option>
-              <option value="Custom 925 Silver Kada / Bracelet">Custom 925 Silver Kada / Bracelet</option>
-              <option value="Custom Diamond-Cut Silver Chain">Custom Diamond-Cut Silver Chain</option>
-              <option value="Personalized Monogram / Name Jewellery">Personalized Monogram / Name Jewellery</option>
+              <option value="Custom 925 Silver Pendant">{t.customModal.types.pendant}</option>
+              <option value="Custom 925 Silver Signet / Band Ring">{t.customModal.types.ring}</option>
+              <option value="Custom 925 Silver Statement Necklace">{t.customModal.types.necklace}</option>
+              <option value="Custom 925 Silver Kada / Bracelet">{t.customModal.types.kada}</option>
+              <option value="Custom Diamond-Cut Silver Chain">{t.customModal.types.chain}</option>
+              <option value="Personalized Monogram / Name Jewellery">{t.customModal.types.name}</option>
             </select>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] mb-1">
-                Estimated Silver Weight
+                {t.customModal.weightLabel}
               </label>
               <select
                 value={targetWeight}
                 onChange={(e) => setTargetWeight(e.target.value)}
                 className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] border border-[#E4D1A3] rounded text-[#171717] focus:outline-none focus:border-[#C6A15B]"
               >
-                <option value="Lightweight (5 - 10 grams)">Lightweight (5 - 10 grams)</option>
-                <option value="Medium (10 - 25 grams)">Medium (10 - 25 grams)</option>
-                <option value="Substantial (25 - 50 grams)">Substantial (25 - 50 grams)</option>
-                <option value="Heavy Heritage (50+ grams)">Heavy Heritage (50+ grams)</option>
-                <option value="Need Advice">Need Artisan Advice</option>
+                <option value="Lightweight (5 - 10 grams)">{t.customModal.weights.light}</option>
+                <option value="Medium (10 - 25 grams)">{t.customModal.weights.medium}</option>
+                <option value="Substantial (25 - 50 grams)">{t.customModal.weights.substantial}</option>
+                <option value="Heavy Heritage (50+ grams)">{t.customModal.weights.heavy}</option>
+                <option value="Need Advice">{t.customModal.weights.advice}</option>
               </select>
             </div>
 
             <div>
               <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] mb-1">
-                Engraving / Inscription <span className="text-[#888888] font-normal lowercase">(optional)</span>
+                {t.customModal.engravingLabel}
               </label>
               <input
                 type="text"
-                placeholder="e.g. Initials, Date, Mantra"
+                placeholder={t.customModal.engravingPlaceholder}
                 value={engraving}
                 onChange={(e) => setEngraving(e.target.value)}
                 className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] border border-[#E4D1A3] rounded text-[#171717] focus:outline-none focus:border-[#C6A15B]"
@@ -114,45 +116,27 @@ export const CustomJewelleryModal: React.FC = () => {
 
           <div>
             <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] mb-1">
-              Design Description &amp; Inspiration
+              {t.customModal.notesLabel}
             </label>
             <textarea
               rows={3}
-              placeholder="Describe your design (antique finish, filigree, stone setting, or attach sketches in WhatsApp)..."
+              placeholder={t.customModal.notesPlaceholder}
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] border border-[#E4D1A3] rounded text-[#171717] focus:outline-none focus:border-[#C6A15B] resize-none"
+              className="w-full px-4 py-2 text-sm bg-[#F8F5EF] border border-[#E4D1A3] rounded text-[#171717] focus:outline-none focus:border-[#C6A15B]"
             />
           </div>
 
-          <div className="p-3 bg-amber-50/80 rounded border border-[#E4D1A3]/50 text-xs text-[#555555] flex items-start gap-2">
-            <CheckCircle2 className="w-4 h-4 text-[#C6A15B] shrink-0 mt-0.5" />
-            <span>
-              Pure 925 Hallmark guarantee: Every custom item is stamped with the official 925 silver certification.
-            </span>
-          </div>
-
-          {/* Action */}
-          <div className="pt-2 flex flex-col sm:flex-row gap-3">
+          <div className="pt-2">
             <button
               type="submit"
-              className="flex-1 inline-flex items-center justify-center gap-2 py-3.5 bg-gradient-to-r from-[#E4D1A3] to-[#C6A15B] hover:from-[#C6A15B] hover:to-[#E4D1A3] text-[#171717] rounded text-xs font-semibold uppercase tracking-wider transition-all shadow-md"
+              className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#171717] hover:bg-[#C6A15B] text-[#E4D1A3] hover:text-[#171717] text-xs font-semibold uppercase tracking-wider rounded transition-colors shadow-md cursor-pointer"
             >
               <MessageCircle className="w-4 h-4 fill-current" />
-              <span>Connect on WhatsApp with Specs</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setIsCustomModalOpen(false)}
-              className="px-5 py-3 text-xs uppercase tracking-wider text-[#777777] hover:text-[#171717]"
-            >
-              Cancel
+              <span>{t.customModal.submitBtn}</span>
             </button>
           </div>
-
         </form>
-
       </div>
     </div>
   );

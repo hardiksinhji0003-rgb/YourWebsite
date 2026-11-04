@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Product, ProductCategory, CartItem } from '../types';
 import { SAMPLE_PRODUCTS } from '../data/products';
+import { useLanguage } from './LanguageContext';
 
 interface ShopContextType {
   products: Product[];
@@ -37,6 +38,7 @@ const ShopContext = createContext<ShopContextType | undefined>(undefined);
 
 export const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [products] = useState<Product[]>(SAMPLE_PRODUCTS);
+  const { t, getLocalizedProduct } = useLanguage();
 
   // Cart state persisted to localStorage
   const [cart, setCart] = useState<CartItem[]>(() => {
@@ -104,12 +106,13 @@ export const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         return [...prevCart, { product, quantity, selectedSize }];
       }
     });
-    showToast(`Added "${product.name}" to your shopping bag.`);
+    const locProduct = getLocalizedProduct(product);
+    showToast(t.toast.addedToBag.replace('{name}', locProduct.name));
   };
 
   const removeFromCart = (productId: string) => {
     setCart((prev) => prev.filter((item) => item.product.id !== productId));
-    showToast('Item removed from shopping bag.');
+    showToast(t.toast.removedFromBag);
   };
 
   const updateCartQuantity = (productId: string, quantity: number) => {
@@ -127,13 +130,15 @@ export const ShopProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   const toggleWishlist = (productId: string) => {
+    const targetProduct = products.find((p) => p.id === productId);
+    const locName = targetProduct ? getLocalizedProduct(targetProduct).name : 'Piece';
     setWishlist((prev) => {
       const exists = prev.includes(productId);
       if (exists) {
-        showToast('Removed piece from your wishlist.');
+        showToast(t.toast.removedFromWishlist);
         return prev.filter((id) => id !== productId);
       } else {
-        showToast('Saved piece to your wishlist.');
+        showToast(t.toast.savedToWishlist.replace('{name}', locName));
         return [...prev, productId];
       }
     });

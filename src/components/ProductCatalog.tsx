@@ -1,7 +1,9 @@
 import React, { useState, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { Heart, Eye, MessageCircle, ShoppingBag, Info, SlidersHorizontal } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
-import { Product, ProductCategory } from '../types';
+import { useLanguage } from '../context/LanguageContext';
+import { ProductCategory } from '../types';
 import { getProductWhatsAppUrl } from '../data/businessConfig';
 
 export const ProductCatalog: React.FC = () => {
@@ -16,6 +18,8 @@ export const ProductCatalog: React.FC = () => {
     setQuickViewProduct,
     addToCart,
   } = useShop();
+
+  const { t, getLocalizedProduct, getLocalizedCategory } = useLanguage();
 
   const [sortBy, setSortBy] = useState<'featured' | 'price-asc' | 'price-desc'>('featured');
 
@@ -34,12 +38,16 @@ export const ProductCatalog: React.FC = () => {
       .filter((item) => {
         const matchesCategory =
           selectedCategory === 'All' ? true : item.category === selectedCategory;
+        const localized = getLocalizedProduct(item);
         const matchesSearch =
           searchQuery.trim() === ''
             ? true
             : item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              localized.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
               item.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-              item.description.toLowerCase().includes(searchQuery.toLowerCase());
+              localized.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              localized.description.toLowerCase().includes(searchQuery.toLowerCase());
         return matchesCategory && matchesSearch;
       })
       .sort((a, b) => {
@@ -47,35 +55,52 @@ export const ProductCatalog: React.FC = () => {
         if (sortBy === 'price-desc') return b.price - a.price;
         return 0;
       });
-  }, [products, selectedCategory, searchQuery, sortBy]);
+  }, [products, selectedCategory, searchQuery, sortBy, getLocalizedProduct]);
 
   return (
     <section id="products" className="py-16 sm:py-24 bg-[#F8F5EF] scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Heading & Subtitle */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+        {/* Section Heading & Subtitle with Framer Motion entrance animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-12"
+        >
           <span className="text-xs uppercase tracking-[0.25em] text-[#C6A15B] font-semibold block mb-2">
-            SIGNATURE SILVER PIECES
+            {t.catalog.badge}
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#171717] font-normal tracking-tight">
-            Our Finest Selection
+            {t.catalog.title}
           </h2>
-          <div className="w-16 h-[1.5px] bg-[#C6A15B] mx-auto my-3" />
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="w-16 h-[1.5px] bg-[#C6A15B] mx-auto my-3 origin-center"
+          />
           <p className="text-[#777777] text-base sm:text-lg font-light">
-            Discover pieces that define timeless elegance.
+            {t.catalog.subtitle}
           </p>
 
-          {/* Explicit Demo Notice as requested by instructions */}
+          {/* Explicit Demo Notice */}
           <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1 bg-amber-50/80 border border-amber-200/60 rounded text-[11px] text-amber-900/80">
             <Info className="w-3.5 h-3.5 text-[#C6A15B]" />
-            <span>Demonstration Catalog: Representative 925 Silver sample pieces for Gujarat Orna presentation</span>
+            <span>{t.catalog.demoNotice}</span>
           </div>
-        </div>
+        </motion.div>
 
         {/* Filter Controls & Search Summary */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 pb-4 border-b border-[#E4D1A3]/50">
-          
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 pb-4 border-b border-[#E4D1A3]/50"
+        >
           {/* Category Tabs */}
           <div className="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none">
             {categories.map((cat) => (
@@ -83,13 +108,13 @@ export const ProductCatalog: React.FC = () => {
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3.5 py-1.5 text-xs font-medium tracking-wider uppercase whitespace-nowrap rounded transition-all duration-200 ${
+                className={`px-3.5 py-1.5 text-xs font-medium tracking-wider uppercase whitespace-nowrap rounded transition-all duration-200 cursor-pointer ${
                   selectedCategory === cat
                     ? 'bg-[#171717] text-[#E4D1A3] shadow-xs'
                     : 'bg-white text-[#555555] hover:text-[#171717] hover:bg-white/80 border border-[#E4D1A3]/60'
                 }`}
               >
-                {cat}
+                {getLocalizedCategory(cat)}
               </button>
             ))}
           </div>
@@ -102,9 +127,9 @@ export const ProductCatalog: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setSearchQuery('')}
-                  className="ml-2 text-[#C6A15B] underline"
+                  className="ml-2 text-[#C6A15B] underline cursor-pointer"
                 >
-                  Clear
+                  {t.nav.clear}
                 </button>
               </span>
             )}
@@ -115,50 +140,56 @@ export const ProductCatalog: React.FC = () => {
                 aria-label="Sort products"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="bg-white border border-[#E4D1A3] rounded px-2.5 py-1.5 text-xs text-[#202020] focus:outline-none focus:border-[#C6A15B]"
+                className="bg-white border border-[#E4D1A3] rounded px-2.5 py-1.5 text-xs text-[#202020] focus:outline-none focus:border-[#C6A15B] cursor-pointer"
               >
-                <option value="featured">Featured First</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
+                <option value="featured">{t.catalog.sortFeatured}</option>
+                <option value="price-asc">{t.catalog.sortPriceAsc}</option>
+                <option value="price-desc">{t.catalog.sortPriceDesc}</option>
               </select>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Products Grid */}
+        {/* Products Grid with Framer Motion staggered entrance animations */}
         {filteredProducts.length === 0 ? (
           <div className="py-16 text-center bg-white rounded-xl border border-[#E4D1A3]/50 p-8">
-            <p className="font-serif text-2xl text-[#171717] mb-2">No Jewellery Found</p>
-            <p className="text-sm text-[#777777] mb-6">
-              We couldn&rsquo;t find any pieces matching your current selection.
-            </p>
+            <p className="font-serif text-2xl text-[#171717] mb-2">{t.catalog.noProductsFound}</p>
             <button
               type="button"
               onClick={() => {
                 setSelectedCategory('All');
                 setSearchQuery('');
               }}
-              className="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider bg-[#171717] text-[#E4D1A3] rounded"
+              className="mt-4 px-6 py-2.5 text-xs font-semibold uppercase tracking-wider bg-[#171717] text-[#E4D1A3] rounded cursor-pointer"
             >
-              Reset Filters
+              {t.catalog.resetFilters}
             </button>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
-            {filteredProducts.map((product) => {
+            {filteredProducts.map((product, index) => {
               const inWishlist = isInWishlist(product.id);
-              const waUrl = getProductWhatsAppUrl(product.name, product.category, product.price);
+              const locProduct = getLocalizedProduct(product);
+              const waUrl = getProductWhatsAppUrl(locProduct.name, locProduct.category, product.price);
 
               return (
-                <div
+                <motion.div
                   key={product.id}
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{
+                    duration: 0.65,
+                    delay: (index % 4) * 0.09,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
                   className="group bg-white rounded-xl overflow-hidden border border-[#E4D1A3]/40 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative"
                 >
                   {/* Top Image Frame with Hover Buttons */}
                   <div className="relative overflow-hidden aspect-[4/3] bg-[#F3F0E8]">
                     <img
                       src={product.image}
-                      alt={product.name}
+                      alt={locProduct.name}
                       className="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
                       loading="lazy"
                       referrerPolicy="no-referrer"
@@ -173,7 +204,7 @@ export const ProductCatalog: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => toggleWishlist(product.id)}
-                      className={`absolute top-3 right-3 p-2 rounded-full transition-all duration-200 shadow-md ${
+                      className={`absolute top-3 right-3 p-2 rounded-full transition-all duration-200 shadow-md cursor-pointer ${
                         inWishlist
                           ? 'bg-rose-50 text-rose-600'
                           : 'bg-white/90 text-[#777777] hover:text-rose-600 hover:bg-white'
@@ -188,18 +219,18 @@ export const ProductCatalog: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setQuickViewProduct(product)}
-                        className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 bg-white/95 backdrop-blur-xs text-[#171717] hover:bg-[#171717] hover:text-[#E4D1A3] text-xs font-semibold tracking-wider uppercase rounded shadow-md transition-colors"
+                        className="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 bg-white/95 backdrop-blur-xs text-[#171717] hover:bg-[#171717] hover:text-[#E4D1A3] text-xs font-semibold tracking-wider uppercase rounded shadow-md transition-colors cursor-pointer"
                       >
                         <Eye className="w-3.5 h-3.5" />
-                        <span>Quick View</span>
+                        <span>{t.catalog.quickView}</span>
                       </button>
 
                       <button
                         type="button"
                         onClick={() => addToCart(product, 1)}
-                        className="p-2 bg-white/95 backdrop-blur-xs text-[#171717] hover:bg-[#C6A15B] hover:text-white rounded shadow-md transition-colors"
-                        title="Add to Bag"
-                        aria-label="Add to Bag"
+                        className="p-2 bg-white/95 backdrop-blur-xs text-[#171717] hover:bg-[#C6A15B] hover:text-white rounded shadow-md transition-colors cursor-pointer"
+                        title={t.catalog.addToBag}
+                        aria-label={t.catalog.addToBag}
                       >
                         <ShoppingBag className="w-4 h-4" />
                       </button>
@@ -211,23 +242,23 @@ export const ProductCatalog: React.FC = () => {
                     <div>
                       {/* Category Label */}
                       <span className="text-[11px] uppercase tracking-wider text-[#C6A15B] font-semibold block mb-1">
-                        {product.category}
+                        {locProduct.category}
                       </span>
 
                       {/* Product Name */}
                       <h3
                         onClick={() => setQuickViewProduct(product)}
                         className="font-serif text-lg font-medium text-[#171717] hover:text-[#C6A15B] transition-colors cursor-pointer line-clamp-1"
-                        title={product.name}
+                        title={locProduct.name}
                       >
-                        {product.name}
+                        {locProduct.name}
                       </h3>
 
                       {/* Hallmark spec */}
                       <p className="text-[11px] text-[#777777] mt-1 flex items-center gap-2">
-                        <span>{product.hallmark}</span>
+                        <span>{locProduct.hallmark}</span>
                         <span>·</span>
-                        <span>{product.weight}</span>
+                        <span>{locProduct.weight}</span>
                       </p>
                     </div>
 
@@ -245,7 +276,7 @@ export const ProductCatalog: React.FC = () => {
                           )}
                         </div>
                         <span className="text-[10px] text-[#999999] block font-light">
-                          Sample Est. Price
+                          925 Silver
                         </span>
                       </div>
 
@@ -255,29 +286,34 @@ export const ProductCatalog: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#171717] bg-[#E4D1A3]/50 hover:bg-[#C6A15B] hover:text-white border border-[#C6A15B]/40 rounded transition-colors"
-                        title="Enquire on WhatsApp"
+                        title={t.catalog.enquireWhatsApp}
                       >
                         <MessageCircle className="w-3.5 h-3.5 fill-current" />
-                        <span>Enquire</span>
+                        <span>{t.nav.enquire}</span>
                       </a>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
         )}
 
         {/* Section bottom note */}
-        <div className="mt-12 text-center text-xs text-[#777777]">
-          <span>Need custom dimensions, chain lengths, or weight specifications? </span>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-12 text-center text-xs text-[#777777]"
+        >
           <a
             href="#custom-jewellery"
             className="text-[#171717] underline hover:text-[#C6A15B] font-medium ml-1"
           >
-            Explore our Custom Jewellery Services
+            {t.customJewellery.enquiryBtn}
           </a>
-        </div>
+        </motion.div>
 
       </div>
     </section>

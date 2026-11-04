@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Heart, ShoppingBag, Menu, X, MessageCircle } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
+import { useLanguage } from '../context/LanguageContext';
 import { BUSINESS_CONFIG, getWhatsAppUrl } from '../data/businessConfig';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { ProductCategory } from '../types';
 
 export const Header: React.FC = () => {
   const {
@@ -13,6 +16,8 @@ export const Header: React.FC = () => {
     setSearchQuery,
     setSelectedCategory,
   } = useShop();
+
+  const { t, getLocalizedCategory } = useLanguage();
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -32,12 +37,12 @@ export const Header: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Collections', href: '#collections' },
-    { name: 'Best Sellers', href: '#products' },
-    { name: 'Custom Design', href: '#custom-jewellery' },
-    { name: 'About Us', href: '#about-us' },
-    { name: 'Contact', href: '#contact' },
+    { name: t.nav.home, href: '#home' },
+    { name: t.nav.collections, href: '#collections' },
+    { name: t.nav.bestSellers, href: '#products' },
+    { name: t.nav.customDesign, href: '#custom-jewellery' },
+    { name: t.nav.aboutUs, href: '#about-us' },
+    { name: t.nav.contact, href: '#contact' },
   ];
 
   const handleNavClick = (href: string) => {
@@ -47,13 +52,20 @@ export const Header: React.FC = () => {
     }
   };
 
+  const sampleCategories: ProductCategory[] = [
+    'Silver Necklaces',
+    'Silver Pendants',
+    'Silver Rings',
+    'Silver Chains',
+  ];
+
   return (
     <>
       {/* Top micro announcement bar */}
       <div className="bg-[#171717] text-[#E4D1A3] py-2 px-4 text-center text-xs tracking-widest uppercase border-b border-[#C6A15B]/20">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <span className="hidden sm:inline text-white/70">Dahegam, Gujarat Boutique</span>
-          <span className="mx-auto font-medium">Pure 925 Silver Jewellery · Hallmark Certified · Bespoke Craft</span>
+          <span className="hidden sm:inline text-white/70">{t.announcement.location}</span>
+          <span className="mx-auto font-medium">{t.announcement.tagline}</span>
           <a
             href={getWhatsAppUrl()}
             target="_blank"
@@ -61,7 +73,7 @@ export const Header: React.FC = () => {
             className="hidden sm:inline-flex items-center gap-1.5 text-[#C6A15B] hover:text-white transition-colors"
           >
             <MessageCircle className="w-3.5 h-3.5" />
-            <span>Direct WhatsApp</span>
+            <span>{t.announcement.directWhatsApp}</span>
           </a>
         </div>
       </div>
@@ -75,9 +87,9 @@ export const Header: React.FC = () => {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4">
-            {/* Mobile menu trigger */}
-            <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center justify-between gap-3 sm:gap-4">
+            {/* Mobile menu trigger & search */}
+            <div className="flex items-center gap-1 sm:gap-2 lg:hidden">
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -91,7 +103,7 @@ export const Header: React.FC = () => {
                 type="button"
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
                 className="p-2 text-[#202020] hover:text-[#C6A15B] transition-colors"
-                aria-label="Search"
+                aria-label={t.nav.searchLabel}
               >
                 <Search className="w-5 h-5" />
               </button>
@@ -99,19 +111,19 @@ export const Header: React.FC = () => {
 
             {/* Left: Brand Identity */}
             <a href="#home" className="flex flex-col items-start group">
-              <span className="font-serif text-2xl sm:text-3xl tracking-[0.18em] font-medium text-[#171717] group-hover:text-[#C6A15B] transition-colors">
+              <span className="font-serif text-xl sm:text-2xl md:text-3xl tracking-[0.18em] font-medium text-[#171717] group-hover:text-[#C6A15B] transition-colors">
                 {BUSINESS_CONFIG.brandName}
               </span>
-              <span className="text-[10px] tracking-[0.25em] text-[#777777] uppercase font-sans -mt-1 font-normal">
+              <span className="text-[9px] sm:text-[10px] tracking-[0.25em] text-[#777777] uppercase font-sans -mt-1 font-normal">
                 {BUSINESS_CONFIG.parentBrand}
               </span>
             </a>
 
             {/* Center Navigation (Desktop) */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
               {navLinks.map((link) => (
                 <a
-                  key={link.name}
+                  key={link.href}
                   href={link.href}
                   onClick={() => handleNavClick(link.href)}
                   className="text-sm font-medium tracking-wide text-[#202020] hover:text-[#C6A15B] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-[#C6A15B] hover:after:w-full after:transition-all after:duration-300"
@@ -121,15 +133,18 @@ export const Header: React.FC = () => {
               ))}
             </nav>
 
-            {/* Right Action Icons */}
-            <div className="flex items-center space-x-2 sm:space-x-4">
+            {/* Right Action Icons & Language Selector */}
+            <div className="flex items-center space-x-1 sm:space-x-3">
+              {/* Language Selector Dropdown (Desktop & Mobile) */}
+              <LanguageSwitcher />
+
               {/* Desktop Search Button */}
               <button
                 type="button"
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
                 className="hidden lg:flex p-2 text-[#202020] hover:text-[#C6A15B] transition-colors"
-                aria-label="Search Jewellery"
-                title="Search collection"
+                aria-label={t.nav.searchLabel}
+                title={t.nav.searchLabel}
               >
                 <Search className="w-5 h-5" />
               </button>
@@ -139,8 +154,8 @@ export const Header: React.FC = () => {
                 type="button"
                 onClick={() => setIsWishlistOpen(true)}
                 className="relative p-2 text-[#202020] hover:text-[#C6A15B] transition-colors"
-                aria-label="View Wishlist"
-                title="Your Wishlist"
+                aria-label={t.nav.wishlistLabel}
+                title={t.nav.wishlistLabel}
               >
                 <Heart className="w-5 h-5" />
                 {wishlistCount > 0 && (
@@ -155,8 +170,8 @@ export const Header: React.FC = () => {
                 type="button"
                 onClick={() => setIsCartOpen(true)}
                 className="relative p-2 text-[#202020] hover:text-[#C6A15B] transition-colors"
-                aria-label="View Shopping Bag"
-                title="Your Bag"
+                aria-label={t.nav.bagLabel}
+                title={t.nav.bagLabel}
               >
                 <ShoppingBag className="w-5 h-5" />
                 {cartCount > 0 && (
@@ -171,11 +186,11 @@ export const Header: React.FC = () => {
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold tracking-wider uppercase text-[#171717] bg-gradient-to-r from-[#E4D1A3] to-[#C6A15B] hover:from-[#C6A15B] hover:to-[#E4D1A3] transition-all rounded shadow-sm hover:shadow"
+                className="hidden xl:inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold tracking-wider uppercase text-[#171717] bg-gradient-to-r from-[#E4D1A3] to-[#C6A15B] hover:from-[#C6A15B] hover:to-[#E4D1A3] transition-all rounded shadow-sm hover:shadow"
                 title="Direct WhatsApp Support"
               >
                 <MessageCircle className="w-3.5 h-3.5 fill-current" />
-                <span>Enquire</span>
+                <span>{t.nav.enquire}</span>
               </a>
             </div>
           </div>
@@ -186,10 +201,10 @@ export const Header: React.FC = () => {
               <div className="relative max-w-xl mx-auto">
                 <input
                   type="text"
-                  placeholder="Search 925 silver necklaces, rings, pendants, chains..."
+                  placeholder={t.nav.searchPlaceholder}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-10 py-2.5 text-sm bg-white border border-[#C6A15B]/50 rounded focus:outline-none focus:ring-1 focus:ring-[#C6A15B] text-[#202020] placeholder-[#777777]"
+                  className="w-full pl-10 pr-12 py-2.5 text-sm bg-white border border-[#C6A15B]/50 rounded focus:outline-none focus:ring-1 focus:ring-[#C6A15B] text-[#202020] placeholder-[#777777]"
                   autoFocus
                 />
                 <Search className="w-4 h-4 text-[#777777] absolute left-3.5 top-3.5" />
@@ -199,7 +214,7 @@ export const Header: React.FC = () => {
                     onClick={() => setSearchQuery('')}
                     className="absolute right-3 top-3 text-xs text-[#777777] hover:text-[#171717]"
                   >
-                    Clear
+                    {t.nav.clear}
                   </button>
                 )}
               </div>
@@ -220,7 +235,7 @@ export const Header: React.FC = () => {
           {/* Drawer content */}
           <div className="relative w-4/5 max-w-xs bg-[#F8F5EF] h-full shadow-2xl z-10 flex flex-col justify-between p-6 overflow-y-auto">
             <div>
-              <div className="flex items-center justify-between pb-6 border-b border-[#E4D1A3]">
+              <div className="flex items-center justify-between pb-5 border-b border-[#E4D1A3]">
                 <div>
                   <span className="font-serif text-xl tracking-[0.16em] font-medium text-[#171717]">
                     {BUSINESS_CONFIG.brandName}
@@ -239,11 +254,16 @@ export const Header: React.FC = () => {
                 </button>
               </div>
 
+              {/* In-drawer Language Switcher for quick mobile access */}
+              <div className="pt-4 pb-2 border-b border-[#E4D1A3]/30">
+                <LanguageSwitcher isMobileDrawer />
+              </div>
+
               {/* Navigation Links */}
-              <nav className="flex flex-col space-y-5 mt-6">
+              <nav className="flex flex-col space-y-4 mt-5">
                 {navLinks.map((link) => (
                   <a
-                    key={link.name}
+                    key={link.href}
                     href={link.href}
                     onClick={() => handleNavClick(link.href)}
                     className="text-base font-medium tracking-wide text-[#202020] hover:text-[#C6A15B] transition-colors py-1 border-b border-[#E4D1A3]/30"
@@ -254,22 +274,22 @@ export const Header: React.FC = () => {
               </nav>
 
               {/* Quick Category Jump */}
-              <div className="mt-8">
+              <div className="mt-7">
                 <span className="text-xs uppercase tracking-widest text-[#777777] font-semibold block mb-3">
-                  Silver Categories
+                  {t.nav.silverCategories}
                 </span>
                 <div className="flex flex-wrap gap-2">
-                  {['Silver Necklaces', 'Silver Pendants', 'Silver Rings', 'Silver Chains'].map((cat) => (
+                  {sampleCategories.map((cat) => (
                     <a
                       key={cat}
                       href="#products"
                       onClick={() => {
-                        setSelectedCategory(cat as any);
+                        setSelectedCategory(cat);
                         setIsMobileMenuOpen(false);
                       }}
                       className="text-xs bg-white text-[#202020] border border-[#E4D1A3] px-3 py-1.5 rounded hover:border-[#C6A15B]"
                     >
-                      {cat}
+                      {getLocalizedCategory(cat)}
                     </a>
                   ))}
                 </div>
@@ -285,12 +305,11 @@ export const Header: React.FC = () => {
                 className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-[#171717] text-[#E4D1A3] rounded font-medium text-xs tracking-wider uppercase hover:bg-black transition-colors"
               >
                 <MessageCircle className="w-4 h-4 text-[#C6A15B]" />
-                <span>Chat on WhatsApp</span>
+                <span>{t.nav.chatOnWhatsApp}</span>
               </a>
 
-              <div className="text-center text-xs text-[#777777]">
-                <p>Opposite Taluka Seva Sadan</p>
-                <p>Dahegam, Gujarat, India</p>
+              <div className="text-center text-xs text-[#777777] whitespace-pre-line leading-relaxed">
+                {t.nav.dahegamLocation}
               </div>
             </div>
           </div>

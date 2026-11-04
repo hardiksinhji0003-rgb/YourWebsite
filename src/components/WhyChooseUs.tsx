@@ -1,29 +1,12 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Shield, Sparkles, Clock, MessageSquareHeart } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 export const WhyChooseUs: React.FC = () => {
-  const features = [
-    {
-      icon: Shield,
-      title: 'Pure 925 Silver',
-      description: 'Beautiful silver jewellery collections crafted with certified 925 sterling silver purity.',
-    },
-    {
-      icon: Sparkles,
-      title: 'Custom Jewellery',
-      description: 'Personalised jewellery designs brought to life by master artisans according to your vision.',
-    },
-    {
-      icon: Clock,
-      title: 'Timeless Designs',
-      description: 'Elegant pieces for every occasion, blending heritage Indian motifs with modern sophistication.',
-    },
-    {
-      icon: MessageSquareHeart,
-      title: 'Personal Assistance',
-      description: 'Easy customer enquiries and assistance with friendly guidance directly over WhatsApp.',
-    },
-  ];
+  const { t } = useLanguage();
+
+  const iconList = [Shield, Sparkles, Clock, MessageSquareHeart];
 
   return (
     <section className="py-20 sm:py-28 bg-[#171717] text-white relative overflow-hidden">
@@ -32,27 +15,47 @@ export const WhyChooseUs: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         
-        {/* Section Heading */}
-        <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+        {/* Section Heading with Framer Motion entrance animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto mb-16 sm:mb-20"
+        >
           <span className="text-xs uppercase tracking-[0.25em] text-[#C6A15B] font-semibold block mb-2">
-            DISTINCTION &amp; TRUST
+            {t.whyChooseUs.badge}
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-normal tracking-tight">
-            Why Choose Gujarat Orna?
+            {t.whyChooseUs.title}
           </h2>
-          <div className="w-16 h-[1.5px] bg-[#C6A15B] mx-auto my-3" />
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="w-16 h-[1.5px] bg-[#C6A15B] mx-auto my-3 origin-center"
+          />
           <p className="text-[#AAAAAA] text-base font-light">
-            Rooted in Dahegam, celebrating pure silver artistry with uncompromised integrity.
+            {t.whyChooseUs.subtitle}
           </p>
-        </div>
+        </motion.div>
 
-        {/* 4 Feature Blocks */}
+        {/* 4 Feature Blocks with Staggered Entrance */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feat, index) => {
-            const Icon = feat.icon;
+          {t.whyChooseUs.features.map((feat, index) => {
+            const Icon = iconList[index % iconList.length];
             return (
-              <div
+              <motion.div
                 key={feat.title}
+                initial={{ opacity: 0, y: 32 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{
+                  duration: 0.7,
+                  delay: index * 0.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
                 className="group relative p-8 rounded-xl bg-[#202020]/80 border border-[#C6A15B]/20 hover:border-[#C6A15B]/60 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-2xl flex flex-col justify-between"
               >
                 <div>
@@ -77,7 +80,7 @@ export const WhyChooseUs: React.FC = () => {
 
                 {/* Subtle bottom accent line */}
                 <div className="w-8 h-[1px] bg-[#C6A15B]/40 mt-6 group-hover:w-full transition-all duration-500" />
-              </div>
+              </motion.div>
             );
           })}
         </div>

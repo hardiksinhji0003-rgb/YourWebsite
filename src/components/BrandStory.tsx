@@ -1,21 +1,31 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight, Award, Compass, Sparkles } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
+import { useLanguage } from '../context/LanguageContext';
+import silversmithStoryImg from '../assets/images/story_indian_silversmith_1793634668463.jpg';
 
 export const BrandStory: React.FC = () => {
   const { setIsStoryModalOpen } = useShop();
+  const { t } = useLanguage();
 
   return (
     <section id="about-us" className="py-16 sm:py-24 bg-[#FFFFFF] border-b border-[#E4D1A3]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Craftsmanship Photography */}
-          <div className="lg:col-span-6 relative">
+          {/* Left Column: Craftsmanship Photography with Viewport Animation */}
+          <motion.div
+            initial={{ opacity: 0, x: -28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 relative"
+          >
             <div className="relative rounded-2xl overflow-hidden bg-[#171717] shadow-xl border border-[#E4D1A3]/60 group">
               <img
-                src="/src/assets/images/craftsmanship_silver_atelier_1793629453470.jpg"
-                alt="Gujarat Jewellers master silversmith handcrafting pure 925 silver jewellery"
+                src={silversmithStoryImg}
+                alt="Gujarat Jewellers Indian master silversmith artisan handcrafting pure 925 silver in Dahegam workshop"
                 className="w-full h-auto object-cover object-center aspect-[4/3] transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
                 referrerPolicy="no-referrer"
@@ -32,10 +42,10 @@ export const BrandStory: React.FC = () => {
                   </div>
                   <div>
                     <h4 className="font-serif text-sm sm:text-base text-[#E4D1A3] font-medium">
-                      The Hand of the Silversmith
+                      {t.brandStory.silversmithCardTitle}
                     </h4>
                     <p className="text-xs text-white/70 font-light">
-                      Every piece begins with raw silver and artistic devotion.
+                      {t.brandStory.silversmithCardDesc}
                     </p>
                   </div>
                 </div>
@@ -44,32 +54,40 @@ export const BrandStory: React.FC = () => {
 
             {/* Decorative background accent */}
             <div className="hidden sm:block absolute -bottom-6 -left-6 w-32 h-32 border border-[#C6A15B]/20 rounded-2xl -z-10" />
-          </div>
+          </motion.div>
 
-          {/* Right Column: Editorial Brand Story */}
-          <div className="lg:col-span-6 space-y-6 sm:space-y-8 text-left">
+          {/* Right Column: Editorial Brand Story with Viewport Animation */}
+          <motion.div
+            initial={{ opacity: 0, x: 28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-6 space-y-6 sm:space-y-8 text-left"
+          >
             {/* Small label */}
             <div className="inline-flex items-center gap-2">
-              <span className="w-8 h-[1px] bg-[#C6A15B]" />
+              <motion.span
+                initial={{ width: 0 }}
+                whileInView={{ width: 32 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="h-[1px] bg-[#C6A15B]"
+              />
               <span className="text-xs uppercase tracking-[0.25em] font-semibold text-[#C6A15B]">
-                OUR STORY
+                {t.brandStory.badge}
               </span>
             </div>
 
             {/* Heading */}
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#171717] font-normal tracking-tight leading-[1.15]">
-              Where Tradition Meets <br />
-              <span className="italic text-[#C6A15B] font-light">Timeless Beauty</span>
+              {t.brandStory.titleLine1} <br />
+              <span className="italic text-[#C6A15B] font-light">{t.brandStory.titleLine2}</span>
             </h2>
 
-            {/* Description matching user brief */}
+            {/* Description */}
             <div className="space-y-4 text-base sm:text-lg text-[#555555] font-light leading-relaxed">
-              <p>
-                At <strong className="font-semibold text-[#171717]">Gujarat Orna by Gujarat Jewellers</strong>, we celebrate the beauty of Pure 925 Silver and the art of timeless jewellery design.
-              </p>
-              <p>
-                From elegant everyday essentials to beautiful custom creations, discover jewellery that reflects your unique style and personality.
-              </p>
+              <p>{t.brandStory.paragraph1}</p>
+              <p>{t.brandStory.paragraph2}</p>
             </div>
 
             {/* Highlighted Values */}
@@ -77,20 +95,20 @@ export const BrandStory: React.FC = () => {
               <div className="p-4 bg-[#F8F5EF] rounded-lg border border-[#E4D1A3]/40">
                 <div className="flex items-center gap-2.5 mb-1.5">
                   <Award className="w-4 h-4 text-[#C6A15B]" />
-                  <span className="font-serif text-base text-[#171717] font-medium">Authentic 925 Silver</span>
+                  <span className="font-serif text-base text-[#171717] font-medium">{t.brandStory.feature1Title}</span>
                 </div>
                 <p className="text-xs text-[#777777]">
-                  Hallmarked sterling silver purity with luminous finishing that endures.
+                  {t.brandStory.feature1Desc}
                 </p>
               </div>
 
               <div className="p-4 bg-[#F8F5EF] rounded-lg border border-[#E4D1A3]/40">
                 <div className="flex items-center gap-2.5 mb-1.5">
                   <Compass className="w-4 h-4 text-[#C6A15B]" />
-                  <span className="font-serif text-base text-[#171717] font-medium">Dahegam Atelier</span>
+                  <span className="font-serif text-base text-[#171717] font-medium">{t.brandStory.feature2Title}</span>
                 </div>
                 <p className="text-xs text-[#777777]">
-                  Located opposite Taluka Seva Sadan, welcoming patrons with warmth.
+                  {t.brandStory.feature2Desc}
                 </p>
               </div>
             </div>
@@ -100,14 +118,14 @@ export const BrandStory: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setIsStoryModalOpen(true)}
-                className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-white bg-[#171717] hover:bg-[#C6A15B] hover:text-[#171717] transition-all duration-300 rounded shadow-sm hover:shadow"
+                className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-white bg-[#171717] hover:bg-[#C6A15B] hover:text-[#171717] transition-all duration-300 rounded shadow-sm hover:shadow cursor-pointer"
               >
-                <span>KNOW MORE</span>
+                <span>{t.brandStory.knowMoreBtn}</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
       </div>
