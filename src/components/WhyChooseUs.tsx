@@ -9,7 +9,7 @@ export const WhyChooseUs: React.FC = () => {
   const iconList = [Shield, Sparkles, Clock, MessageSquareHeart];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#171717] text-white relative overflow-hidden">
+    <section className="py-20 sm:py-28 bg-[#171717] dark:bg-[#0E0E0E] text-white relative overflow-hidden border-b border-transparent dark:border-[#C6A15B]/20 transition-colors duration-300">
       {/* Decorative luxury radial background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#C6A15B]/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -56,30 +56,32 @@ export const WhyChooseUs: React.FC = () => {
                   delay: index * 0.1,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="group relative p-8 rounded-xl bg-[#202020]/80 border border-[#C6A15B]/20 hover:border-[#C6A15B]/60 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-2xl flex flex-col justify-between"
+                className="h-full"
               >
-                <div>
-                  {/* Icon Frame */}
-                  <div className="w-14 h-14 rounded-lg bg-[#171717] border border-[#C6A15B]/40 flex items-center justify-center mb-6 group-hover:border-[#C6A15B] group-hover:bg-[#C6A15B]/10 transition-colors">
-                    <Icon className="w-6 h-6 text-[#C6A15B] transition-transform group-hover:scale-110" />
+                <div className="group relative p-8 rounded-xl bg-[#202020]/80 dark:bg-[#181715]/95 border border-[#C6A15B]/20 dark:border-[#C6A15B]/30 shadow-lg flex flex-col justify-between h-full w-full luxury-card-lift-dark transition-colors duration-300">
+                  <div>
+                    {/* Icon Frame */}
+                    <div className="w-14 h-14 rounded-lg bg-[#171717] border border-[#C6A15B]/40 flex items-center justify-center mb-6 group-hover:border-[#C6A15B] group-hover:bg-[#C6A15B]/10 transition-colors">
+                      <Icon className="w-6 h-6 text-[#C6A15B] transition-transform group-hover:scale-110" />
+                    </div>
+
+                    {/* Title with clean unboxed numbering */}
+                    <div className="text-[11px] font-mono text-[#E4D1A3]/60 mb-1 tabular-nums">
+                      0{index + 1}
+                    </div>
+                    <h3 className="font-serif text-xl sm:text-2xl text-white font-medium mb-3 group-hover:text-[#E4D1A3] transition-colors">
+                      {feat.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-sm text-[#AAAAAA] leading-relaxed font-light">
+                      {feat.description}
+                    </p>
                   </div>
 
-                  {/* Title with clean unboxed numbering */}
-                  <div className="text-[11px] font-mono text-[#E4D1A3]/60 mb-1 tabular-nums">
-                    0{index + 1}
-                  </div>
-                  <h3 className="font-serif text-xl sm:text-2xl text-white font-medium mb-3 group-hover:text-[#E4D1A3] transition-colors">
-                    {feat.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-sm text-[#AAAAAA] leading-relaxed font-light">
-                    {feat.description}
-                  </p>
+                  {/* Subtle bottom accent line */}
+                  <div className="w-8 h-[1px] bg-[#C6A15B]/40 mt-6 group-hover:w-full transition-all duration-500" />
                 </div>
-
-                {/* Subtle bottom accent line */}
-                <div className="w-8 h-[1px] bg-[#C6A15B]/40 mt-6 group-hover:w-full transition-all duration-500" />
               </motion.div>
             );
           })}

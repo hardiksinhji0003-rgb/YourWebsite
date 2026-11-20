@@ -14,6 +14,9 @@ export interface Product {
   price: number;
   originalPrice?: number;
   image: string;
+  imageFit?: 'cover' | 'contain';
+  imagePosition?: string;
+  imageBg?: string;
   additionalImages?: string[];
   description: string;
   purity: string;
@@ -33,6 +36,9 @@ export interface CollectionItem {
   subtitle: string;
   categoryKey: ProductCategory;
   image: string;
+  imageFit?: 'cover' | 'contain';
+  imagePosition?: string;
+  imageBg?: string;
   itemCount: number;
   tagline: string;
 }
@@ -51,6 +57,7 @@ export interface Testimonial {
 export interface InstagramPost {
   id: string;
   image: string;
+  imagePosition?: string;
   caption: string;
   likes: string;
   url: string;

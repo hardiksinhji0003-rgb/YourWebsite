@@ -59,7 +59,7 @@ export const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-24 bg-[#FFFFFF] border-b border-[#E4D1A3]/30 scroll-mt-16">
+    <section id="contact" className="py-16 sm:py-24 bg-[#FFFFFF] dark:bg-[#161616] border-b border-[#E4D1A3]/30 dark:border-[#C6A15B]/20 scroll-mt-16 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header with Framer Motion */}
@@ -73,7 +73,7 @@ export const ContactSection: React.FC = () => {
           <span className="text-xs uppercase tracking-[0.25em] text-[#C6A15B] font-semibold block mb-2">
             {t.contact.badge}
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#171717] font-normal tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#171717] dark:text-[#F5EFE6] font-normal tracking-tight">
             {t.contact.title}
           </h2>
           <motion.div
@@ -83,7 +83,7 @@ export const ContactSection: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="w-16 h-[1.5px] bg-[#C6A15B] mx-auto my-3 origin-center"
           />
-          <p className="text-[#555555] text-base sm:text-lg font-light leading-relaxed">
+          <p className="text-[#555555] dark:text-[#CFC8BC] text-base sm:text-lg font-light leading-relaxed">
             {t.contact.subtitle}
           </p>
         </motion.div>
@@ -99,23 +99,23 @@ export const ContactSection: React.FC = () => {
             className="lg:col-span-5 space-y-6"
           >
             {/* Business Card */}
-            <div className="bg-[#F8F5EF] p-7 sm:p-8 rounded-xl border border-[#E4D1A3] shadow-xs">
+            <div className="bg-[#F8F5EF] dark:bg-[#1E1D1B] p-7 sm:p-8 rounded-xl border border-[#E4D1A3] dark:border-[#C6A15B]/35 shadow-xs luxury-card-lift transition-colors duration-300">
               <span className="text-xs uppercase tracking-widest text-[#C6A15B] font-semibold block mb-1">
                 {t.contact.boutiqueCardTitle}
               </span>
-              <h3 className="font-serif text-2xl text-[#171717] font-medium mb-1">
+              <h3 className="font-serif text-2xl text-[#171717] dark:text-[#F5EFE6] font-medium mb-1">
                 {BUSINESS_CONFIG.brandName}
               </h3>
-              <p className="text-xs text-[#777777] uppercase tracking-wider mb-5">
+              <p className="text-xs text-[#777777] dark:text-[#A8A298] uppercase tracking-wider mb-5">
                 {BUSINESS_CONFIG.parentBrand}
               </p>
 
-              <div className="space-y-4 text-xs sm:text-sm text-[#444444]">
+              <div className="space-y-4 text-xs sm:text-sm text-[#444444] dark:text-[#CFC8BC]">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-[#C6A15B] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold text-[#171717] block">{t.contact.addressLabel}</span>
-                    <p className="text-[#666666] leading-relaxed">
+                    <span className="font-semibold text-[#171717] dark:text-[#F5EFE6] block">{t.contact.addressLabel}</span>
+                    <p className="text-[#666666] dark:text-[#A8A298] leading-relaxed">
                       {BUSINESS_CONFIG.location.fullAddress}
                     </p>
                   </div>
@@ -124,8 +124,8 @@ export const ContactSection: React.FC = () => {
                 <div className="flex items-start gap-3">
                   <Clock className="w-4 h-4 text-[#C6A15B] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold text-[#171717] block">{t.contact.hoursLabel}</span>
-                    <p className="text-[#666666] whitespace-pre-line leading-relaxed">
+                    <span className="font-semibold text-[#171717] dark:text-[#F5EFE6] block">{t.contact.hoursLabel}</span>
+                    <p className="text-[#666666] dark:text-[#A8A298] whitespace-pre-line leading-relaxed">
                       {t.contact.hoursValue}
                     </p>
                   </div>
@@ -134,7 +134,7 @@ export const ContactSection: React.FC = () => {
                 <div className="flex items-start gap-3">
                   <Instagram className="w-4 h-4 text-[#C6A15B] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold text-[#171717] block">{t.contact.instagramCardTitle}</span>
+                    <span className="font-semibold text-[#171717] dark:text-[#F5EFE6] block">{t.contact.instagramCardTitle}</span>
                     <a
                       href={BUSINESS_CONFIG.social.instagramUrl}
                       target="_blank"
@@ -148,12 +148,12 @@ export const ContactSection: React.FC = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-6 mt-6 border-t border-[#E4D1A3]/50 flex flex-col sm:flex-row gap-3">
+              <div className="pt-6 mt-6 border-t border-[#E4D1A3]/50 dark:border-[#C6A15B]/25 flex flex-col sm:flex-row gap-3">
                 <a
                   href={getWhatsAppUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#171717] hover:bg-[#C6A15B] text-white hover:text-[#171717] rounded text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#171717] dark:bg-[#C6A15B] hover:bg-[#C6A15B] dark:hover:bg-[#E4D1A3] text-white dark:text-[#171717] hover:text-[#171717] rounded text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
                 >
                   <MessageCircle className="w-3.5 h-3.5 fill-current" />
                   <span>WhatsApp</span>
@@ -163,7 +163,7 @@ export const ContactSection: React.FC = () => {
                   href={BUSINESS_CONFIG.location.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white hover:bg-[#171717] text-[#171717] hover:text-[#E4D1A3] border border-[#E4D1A3] rounded text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white dark:bg-[#262420] hover:bg-[#171717] dark:hover:bg-[#C6A15B] text-[#171717] dark:text-[#E4D1A3] hover:text-[#E4D1A3] dark:hover:text-[#171717] border border-[#E4D1A3] dark:border-[#C6A15B]/40 rounded text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
                 >
                   <Navigation className="w-3.5 h-3.5" />
                   <span>Google Maps</span>
@@ -172,8 +172,8 @@ export const ContactSection: React.FC = () => {
             </div>
 
             {/* In-Store Note */}
-            <div className="p-4 bg-amber-50/70 border border-[#E4D1A3]/40 rounded-lg text-xs text-[#666666] leading-relaxed">
-              <strong className="text-[#171717] block mb-1">Dahegam Flagship Boutique</strong>
+            <div className="p-4 bg-amber-50/70 dark:bg-[#221F19] border border-[#E4D1A3]/40 dark:border-[#C6A15B]/30 rounded-lg text-xs text-[#666666] dark:text-[#CFC8BC] leading-relaxed">
+              <strong className="text-[#171717] dark:text-[#E4D1A3] block mb-1">Dahegam Flagship Boutique</strong>
               Opposite Taluka Seva Sadan, Dahegam, Gujarat, India.
             </div>
           </motion.div>
@@ -186,23 +186,23 @@ export const ContactSection: React.FC = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7"
           >
-            <div className="bg-[#FFFFFF] p-8 sm:p-10 rounded-xl border border-[#E4D1A3] shadow-sm">
-              <h3 className="font-serif text-2xl text-[#171717] mb-1 font-medium">
+            <div className="bg-[#FFFFFF] dark:bg-[#1E1D1B] p-8 sm:p-10 rounded-xl border border-[#E4D1A3] dark:border-[#C6A15B]/35 shadow-sm transition-colors duration-300">
+              <h3 className="font-serif text-2xl text-[#171717] dark:text-[#F5EFE6] mb-1 font-medium">
                 {t.contact.formTitle}
               </h3>
-              <p className="text-xs text-[#777777] mb-6">
+              <p className="text-xs text-[#777777] dark:text-[#A8A298] mb-6">
                 {t.contact.formSubtitle}
               </p>
 
               {isSubmitted ? (
                 <div className="py-8 text-center space-y-4">
-                  <div className="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto">
+                  <div className="w-14 h-14 bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 rounded-full flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-7 h-7" />
                   </div>
-                  <h4 className="font-serif text-2xl text-[#171717]">
+                  <h4 className="font-serif text-2xl text-[#171717] dark:text-[#F5EFE6]">
                     {t.contact.successTitle}
                   </h4>
-                  <p className="text-sm text-[#555555] max-w-md mx-auto leading-relaxed">
+                  <p className="text-sm text-[#555555] dark:text-[#CFC8BC] max-w-md mx-auto leading-relaxed">
                     {t.contact.successMessage}
                   </p>
 
@@ -210,7 +210,7 @@ export const ContactSection: React.FC = () => {
                     <button
                       type="button"
                       onClick={handleForwardToWhatsApp}
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#171717] hover:bg-[#C6A15B] text-[#E4D1A3] hover:text-[#171717] rounded text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#171717] dark:bg-[#C6A15B] hover:bg-[#C6A15B] dark:hover:bg-[#E4D1A3] text-[#E4D1A3] dark:text-[#171717] hover:text-[#171717] rounded text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
                     >
                       <MessageCircle className="w-4 h-4 fill-current" />
                       <span>{t.contact.forwardWhatsAppBtn}</span>
@@ -229,7 +229,7 @@ export const ContactSection: React.FC = () => {
                         message: '',
                       });
                     }}
-                    className="text-xs text-[#777777] underline pt-2 hover:text-[#171717] cursor-pointer"
+                    className="text-xs text-[#777777] dark:text-[#A8A298] underline pt-2 hover:text-[#171717] dark:hover:text-[#F5EFE6] cursor-pointer"
                   >
                     {t.contact.sendAnotherBtn}
                   </button>
@@ -238,7 +238,7 @@ export const ContactSection: React.FC = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   {/* Full Name */}
                   <div>
-                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] mb-1">
+                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] dark:text-[#F5EFE6] mb-1">
                       {t.contact.nameLabel}
                     </label>
                     <input
@@ -246,7 +246,7 @@ export const ContactSection: React.FC = () => {
                       placeholder={t.contact.namePlaceholder}
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                      className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] border border-[#E4D1A3] rounded text-[#171717] focus:outline-none focus:border-[#C6A15B]"
+                      className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] dark:bg-[#141413] border border-[#E4D1A3] dark:border-[#C6A15B]/35 rounded text-[#171717] dark:text-[#F5EFE6] placeholder-[#999999] dark:placeholder-[#777777] focus:outline-none focus:border-[#C6A15B]"
                     />
                     {errors.fullName && (
                       <p className="text-[11px] text-rose-500 mt-1 flex items-center gap-1">
@@ -259,7 +259,7 @@ export const ContactSection: React.FC = () => {
                   {/* Phone & Email */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] mb-1">
+                      <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] dark:text-[#F5EFE6] mb-1">
                         {t.contact.phoneLabel}
                       </label>
                       <input
@@ -267,7 +267,7 @@ export const ContactSection: React.FC = () => {
                         placeholder={t.contact.phonePlaceholder}
                         value={formData.phoneNumber}
                         onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
-                        className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] border border-[#E4D1A3] rounded text-[#171717] focus:outline-none focus:border-[#C6A15B]"
+                        className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] dark:bg-[#141413] border border-[#E4D1A3] dark:border-[#C6A15B]/35 rounded text-[#171717] dark:text-[#F5EFE6] placeholder-[#999999] dark:placeholder-[#777777] focus:outline-none focus:border-[#C6A15B]"
                       />
                       {errors.phoneNumber && (
                         <p className="text-[11px] text-rose-500 mt-1 flex items-center gap-1">
@@ -278,7 +278,7 @@ export const ContactSection: React.FC = () => {
                     </div>
 
                     <div>
-                      <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] mb-1">
+                      <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] dark:text-[#F5EFE6] mb-1">
                         {t.contact.emailLabel}
                       </label>
                       <input
@@ -286,7 +286,7 @@ export const ContactSection: React.FC = () => {
                         placeholder={t.contact.emailPlaceholder}
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] border border-[#E4D1A3] rounded text-[#171717] focus:outline-none focus:border-[#C6A15B]"
+                        className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] dark:bg-[#141413] border border-[#E4D1A3] dark:border-[#C6A15B]/35 rounded text-[#171717] dark:text-[#F5EFE6] placeholder-[#999999] dark:placeholder-[#777777] focus:outline-none focus:border-[#C6A15B]"
                       />
                       {errors.email && (
                         <p className="text-[11px] text-rose-500 mt-1 flex items-center gap-1">
@@ -299,13 +299,13 @@ export const ContactSection: React.FC = () => {
 
                   {/* Jewellery Interest */}
                   <div>
-                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] mb-1">
+                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] dark:text-[#F5EFE6] mb-1">
                       {t.contact.interestLabel}
                     </label>
                     <select
                       value={formData.jewelleryInterest}
                       onChange={(e) => setFormData({ ...formData, jewelleryInterest: e.target.value })}
-                      className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] border border-[#E4D1A3] rounded text-[#171717] focus:outline-none focus:border-[#C6A15B]"
+                      className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] dark:bg-[#141413] border border-[#E4D1A3] dark:border-[#C6A15B]/35 rounded text-[#171717] dark:text-[#F5EFE6] focus:outline-none focus:border-[#C6A15B]"
                     >
                       <option value="Pure 925 Silver Jewellery">{t.contact.interests.pureSilver}</option>
                       <option value="Custom Jewellery & Bespoke Design">{t.contact.interests.customDesign}</option>
@@ -320,7 +320,7 @@ export const ContactSection: React.FC = () => {
 
                   {/* Message */}
                   <div>
-                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] mb-1">
+                    <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] dark:text-[#F5EFE6] mb-1">
                       {t.contact.messageLabel}
                     </label>
                     <textarea
@@ -328,7 +328,7 @@ export const ContactSection: React.FC = () => {
                       placeholder={t.contact.messagePlaceholder}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] border border-[#E4D1A3] rounded text-[#171717] focus:outline-none focus:border-[#C6A15B]"
+                      className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] dark:bg-[#141413] border border-[#E4D1A3] dark:border-[#C6A15B]/35 rounded text-[#171717] dark:text-[#F5EFE6] placeholder-[#999999] dark:placeholder-[#777777] focus:outline-none focus:border-[#C6A15B]"
                     />
                     {errors.message && (
                       <p className="text-[11px] text-rose-500 mt-1 flex items-center gap-1">
@@ -343,7 +343,7 @@ export const ContactSection: React.FC = () => {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="w-full flex items-center justify-center gap-2 px-8 py-3.5 bg-[#171717] hover:bg-[#C6A15B] text-white hover:text-[#171717] rounded text-xs font-semibold uppercase tracking-[0.18em] transition-all duration-300 shadow-md cursor-pointer disabled:opacity-70"
+                      className="w-full flex items-center justify-center gap-2 px-8 py-3.5 bg-[#171717] dark:bg-[#C6A15B] hover:bg-[#C6A15B] dark:hover:bg-[#E4D1A3] text-white dark:text-[#171717] hover:text-[#171717] rounded text-xs font-semibold uppercase tracking-[0.18em] transition-all duration-300 shadow-md cursor-pointer disabled:opacity-70"
                     >
                       <Send className="w-4 h-4" />
                       <span>{submitting ? t.contact.submittingBtn : t.contact.submitBtn}</span>

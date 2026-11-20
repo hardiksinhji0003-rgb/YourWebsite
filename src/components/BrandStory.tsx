@@ -3,14 +3,15 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Award, Compass, Sparkles } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { useLanguage } from '../context/LanguageContext';
-import silversmithStoryImg from '../assets/images/story_indian_silversmith_1793634668463.jpg';
+
+const SHOWROOM_STORY_IMG = '/assets/aistudio/image_b6ac1a93.png';
 
 export const BrandStory: React.FC = () => {
   const { setIsStoryModalOpen } = useShop();
   const { t } = useLanguage();
 
   return (
-    <section id="about-us" className="py-16 sm:py-24 bg-[#FFFFFF] border-b border-[#E4D1A3]/30">
+    <section id="about-us" className="py-16 sm:py-24 bg-[#FFFFFF] dark:bg-[#161616] border-b border-[#E4D1A3]/30 dark:border-[#C6A15B]/20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
@@ -22,10 +23,10 @@ export const BrandStory: React.FC = () => {
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-6 relative"
           >
-            <div className="relative rounded-2xl overflow-hidden bg-[#171717] shadow-xl border border-[#E4D1A3]/60 group">
+            <div className="relative rounded-2xl overflow-hidden bg-[#171717] shadow-xl border border-[#E4D1A3]/60 group animate-float-story">
               <img
-                src={silversmithStoryImg}
-                alt="Gujarat Jewellers Indian master silversmith artisan handcrafting pure 925 silver in Dahegam workshop"
+                src={SHOWROOM_STORY_IMG}
+                alt="Gujarat Orna by Gujarat Jewellers Dahegam showroom marble gallery display"
                 className="w-full h-auto object-cover object-center aspect-[4/3] transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
                 referrerPolicy="no-referrer"
@@ -79,35 +80,35 @@ export const BrandStory: React.FC = () => {
             </div>
 
             {/* Heading */}
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#171717] font-normal tracking-tight leading-[1.15]">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#171717] dark:text-[#F5EFE6] font-normal tracking-tight leading-[1.15]">
               {t.brandStory.titleLine1} <br />
               <span className="italic text-[#C6A15B] font-light">{t.brandStory.titleLine2}</span>
             </h2>
 
             {/* Description */}
-            <div className="space-y-4 text-base sm:text-lg text-[#555555] font-light leading-relaxed">
+            <div className="space-y-4 text-base sm:text-lg text-[#555555] dark:text-[#CFC8BC] font-light leading-relaxed">
               <p>{t.brandStory.paragraph1}</p>
               <p>{t.brandStory.paragraph2}</p>
             </div>
 
             {/* Highlighted Values */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="p-4 bg-[#F8F5EF] rounded-lg border border-[#E4D1A3]/40">
+              <div className="p-4 bg-[#F8F5EF] dark:bg-[#1E1D1B] rounded-lg border border-[#E4D1A3]/40 dark:border-[#C6A15B]/30 luxury-card-lift transition-colors duration-300">
                 <div className="flex items-center gap-2.5 mb-1.5">
                   <Award className="w-4 h-4 text-[#C6A15B]" />
-                  <span className="font-serif text-base text-[#171717] font-medium">{t.brandStory.feature1Title}</span>
+                  <span className="font-serif text-base text-[#171717] dark:text-[#F5EFE6] font-medium">{t.brandStory.feature1Title}</span>
                 </div>
-                <p className="text-xs text-[#777777]">
+                <p className="text-xs text-[#777777] dark:text-[#A8A298]">
                   {t.brandStory.feature1Desc}
                 </p>
               </div>
 
-              <div className="p-4 bg-[#F8F5EF] rounded-lg border border-[#E4D1A3]/40">
+              <div className="p-4 bg-[#F8F5EF] dark:bg-[#1E1D1B] rounded-lg border border-[#E4D1A3]/40 dark:border-[#C6A15B]/30 luxury-card-lift transition-colors duration-300">
                 <div className="flex items-center gap-2.5 mb-1.5">
                   <Compass className="w-4 h-4 text-[#C6A15B]" />
-                  <span className="font-serif text-base text-[#171717] font-medium">{t.brandStory.feature2Title}</span>
+                  <span className="font-serif text-base text-[#171717] dark:text-[#F5EFE6] font-medium">{t.brandStory.feature2Title}</span>
                 </div>
-                <p className="text-xs text-[#777777]">
+                <p className="text-xs text-[#777777] dark:text-[#A8A298]">
                   {t.brandStory.feature2Desc}
                 </p>
               </div>
@@ -118,7 +119,7 @@ export const BrandStory: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setIsStoryModalOpen(true)}
-                className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-white bg-[#171717] hover:bg-[#C6A15B] hover:text-[#171717] transition-all duration-300 rounded shadow-sm hover:shadow cursor-pointer"
+                className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-white dark:text-[#171717] bg-[#171717] dark:bg-[#C6A15B] hover:bg-[#C6A15B] dark:hover:bg-[#E4D1A3] hover:text-[#171717] transition-all duration-300 rounded shadow-sm hover:shadow cursor-pointer"
               >
                 <span>{t.brandStory.knowMoreBtn}</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

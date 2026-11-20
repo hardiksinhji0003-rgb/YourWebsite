@@ -4,7 +4,8 @@ import { MessageCircle, PenTool, CheckCircle2 } from 'lucide-react';
 import { getCustomJewelleryWhatsAppUrl } from '../data/businessConfig';
 import { useShop } from '../context/ShopContext';
 import { useLanguage } from '../context/LanguageContext';
-import customJewelleryImg from '../assets/images/custom_silver_jewellery_1793629453356.jpg';
+
+const CUSTOM_ATELIER_IMG = '/assets/aistudio/image_ae233db2.png';
 
 export const CustomJewellery: React.FC = () => {
   const { setIsCustomModalOpen } = useShop();
@@ -12,9 +13,9 @@ export const CustomJewellery: React.FC = () => {
   const directWhatsAppUrl = getCustomJewelleryWhatsAppUrl();
 
   return (
-    <section id="custom-jewellery" className="py-16 sm:py-24 bg-[#F8F5EF] relative overflow-hidden">
+    <section id="custom-jewellery" className="py-16 sm:py-24 bg-[#F8F5EF] dark:bg-[#121212] relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#FFFFFF] rounded-2xl border border-[#E4D1A3] p-8 sm:p-12 lg:p-16 shadow-lg overflow-hidden relative">
+        <div className="bg-[#FFFFFF] dark:bg-[#1A1917] rounded-2xl border border-[#E4D1A3] dark:border-[#C6A15B]/35 p-8 sm:p-12 lg:p-16 shadow-lg overflow-hidden relative transition-colors duration-300">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
@@ -39,12 +40,12 @@ export const CustomJewellery: React.FC = () => {
                 </span>
               </div>
 
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#171717] font-normal tracking-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#171717] dark:text-[#F5EFE6] font-normal tracking-tight">
                 {t.customJewellery.titleLine1} <br />
                 <span className="italic text-[#C6A15B] font-light">{t.customJewellery.titleLine2}</span>
               </h2>
 
-              <p className="text-base sm:text-lg text-[#555555] font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-[#555555] dark:text-[#CFC8BC] font-light leading-relaxed">
                 {t.customJewellery.description}
               </p>
 
@@ -54,8 +55,8 @@ export const CustomJewellery: React.FC = () => {
                   <div key={step.title} className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-[#C6A15B] shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="text-sm font-semibold text-[#171717]">{step.title}</h4>
-                      <p className="text-xs text-[#777777]">{step.desc}</p>
+                      <h4 className="text-sm font-semibold text-[#171717] dark:text-[#F5EFE6]">{step.title}</h4>
+                      <p className="text-xs text-[#777777] dark:text-[#A8A298]">{step.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -78,14 +79,14 @@ export const CustomJewellery: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsCustomModalOpen(true)}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#171717] bg-white border border-[#C6A15B] hover:bg-[#F8F5EF] transition-colors rounded cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#171717] dark:text-[#E4D1A3] bg-white dark:bg-[#24221F] border border-[#C6A15B] hover:bg-[#F8F5EF] dark:hover:bg-[#2E2C28] transition-colors rounded cursor-pointer"
                 >
                   <PenTool className="w-3.5 h-3.5 text-[#C6A15B]" />
                   <span>{t.customJewellery.specsBtn}</span>
                 </button>
               </div>
 
-              <p className="text-[11px] text-[#777777] italic">
+              <p className="text-[11px] text-[#777777] dark:text-[#A8A298] italic">
                 {t.customJewellery.whatsAppFootnote}
               </p>
             </motion.div>
@@ -98,28 +99,28 @@ export const CustomJewellery: React.FC = () => {
               transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-6"
             >
-              <div className="relative rounded-xl overflow-hidden shadow-2xl border border-[#E4D1A3] group">
+              <div className="relative rounded-xl overflow-hidden shadow-2xl border border-[#E4D1A3] dark:border-[#C6A15B]/45 group animate-float-atelier">
                 <img
-                  src={customJewelleryImg}
-                  alt="Custom 925 silver jewellery design sketches and handcrafted medallion pendant"
-                  className="w-full h-auto object-cover object-center aspect-[4/3] transition-transform duration-700 group-hover:scale-105"
+                  src={CUSTOM_ATELIER_IMG}
+                  alt="Gujarat Orna bespoke bridal choker, layered rani haar, jhumkas, and bangles showcase"
+                  className="w-full h-auto object-cover object-[50%_92%] aspect-[4/3] transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                   referrerPolicy="no-referrer"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
 
-                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-xs p-4 rounded border border-white/70">
+                <div className="absolute bottom-4 left-4 right-4 bg-white/95 dark:bg-[#171717]/90 backdrop-blur-xs p-4 rounded border border-white/70 dark:border-[#C6A15B]/40">
                   <div className="flex items-center justify-between">
                     <div>
                       <span className="text-[10px] uppercase tracking-wider text-[#C6A15B] font-semibold block">
                         {t.customJewellery.commissionTag}
                       </span>
-                      <h4 className="font-serif text-base text-[#171717] font-medium">
+                      <h4 className="font-serif text-base text-[#171717] dark:text-[#F5EFE6] font-medium">
                         {t.customJewellery.commissionTitle}
                       </h4>
                     </div>
-                    <span className="text-xs text-[#777777] font-mono">
+                    <span className="text-xs text-[#777777] dark:text-[#CFC8BC] font-mono">
                       {t.customJewellery.commissionCustom}
                     </span>
                   </div>

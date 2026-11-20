@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { ShopProvider } from './context/ShopContext';
 import { Header } from './components/Header';
@@ -16,6 +17,7 @@ import { CustomJewellery } from './components/CustomJewellery';
 import { InstagramGallery } from './components/InstagramGallery';
 import { Testimonials } from './components/Testimonials';
 import { ContactSection } from './components/ContactSection';
+import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { QuickViewModal } from './components/QuickViewModal';
 import { CartDrawer } from './components/CartDrawer';
@@ -27,9 +29,10 @@ import { NotificationToast } from './components/NotificationToast';
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <ShopProvider>
-        <div className="min-h-screen bg-[#F8F5EF] text-[#202020] flex flex-col selection:bg-[#E4D1A3] selection:text-[#171717]">
+    <ThemeProvider>
+      <LanguageProvider>
+        <ShopProvider>
+          <div className="min-h-screen bg-[#F8F5EF] dark:bg-[#121212] text-[#202020] dark:text-[#F5EFE6] flex flex-col selection:bg-[#E4D1A3] selection:text-[#171717] transition-colors duration-300">
           {/* Sticky Header with Navigation */}
           <Header />
 
@@ -61,6 +64,9 @@ export default function App() {
 
             {/* 9. Contact Section & Interactive Enquiry Form */}
             <ContactSection />
+
+            {/* 10. Interactive FAQ Accordion */}
+            <FaqSection />
           </main>
 
           {/* 10. Luxury Dark Footer */}
@@ -77,5 +83,6 @@ export default function App() {
         </div>
       </ShopProvider>
     </LanguageProvider>
+  </ThemeProvider>
   );
 }

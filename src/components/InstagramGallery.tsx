@@ -9,7 +9,7 @@ export const InstagramGallery: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-16 sm:py-24 bg-[#FFFFFF] border-b border-[#E4D1A3]/30">
+    <section className="py-16 sm:py-24 bg-[#FFFFFF] dark:bg-[#161616] border-b border-[#E4D1A3]/30 dark:border-[#C6A15B]/20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header with Framer Motion */}
@@ -32,7 +32,7 @@ export const InstagramGallery: React.FC = () => {
             </a>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#171717] font-normal tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#171717] dark:text-[#F5EFE6] font-normal tracking-tight">
             {t.instagram.title}
           </h2>
           <motion.div
@@ -42,7 +42,7 @@ export const InstagramGallery: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="w-16 h-[1.5px] bg-[#C6A15B] mx-auto my-3 origin-center"
           />
-          <p className="text-[#777777] text-base font-light">
+          <p className="text-[#777777] dark:text-[#A8A298] text-base font-light">
             {t.instagram.subtitle}
           </p>
         </motion.div>
@@ -63,12 +63,12 @@ export const InstagramGallery: React.FC = () => {
                 delay: (index % 6) * 0.08,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="group relative aspect-square rounded-lg overflow-hidden bg-[#EFECE5] shadow-xs border border-[#E4D1A3]/40 block"
+              className="group relative aspect-square rounded-lg overflow-hidden bg-[#EFECE5] dark:bg-[#1E1D1B] shadow-xs border border-[#E4D1A3]/40 dark:border-[#C6A15B]/30 block"
             >
               <img
                 src={post.image}
                 alt="Gujarat Orna Instagram silver jewellery post"
-                className="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-110"
+                className={`w-full h-full object-cover ${post.imagePosition || 'object-center'} transition-transform duration-500 ease-out group-hover:scale-110`}
                 loading="lazy"
                 referrerPolicy="no-referrer"
               />
@@ -105,7 +105,7 @@ export const InstagramGallery: React.FC = () => {
             href={BUSINESS_CONFIG.social.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#171717] hover:bg-[#C6A15B] text-white hover:text-[#171717] rounded text-xs font-semibold uppercase tracking-[0.18em] transition-all duration-300 shadow-sm cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#171717] dark:bg-[#C6A15B] hover:bg-[#C6A15B] dark:hover:bg-[#E4D1A3] text-white dark:text-[#171717] hover:text-[#171717] rounded text-xs font-semibold uppercase tracking-[0.18em] transition-all duration-300 shadow-sm cursor-pointer"
           >
             <Instagram className="w-4 h-4" />
             <span>{t.instagram.followBtn}</span>

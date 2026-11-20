@@ -30,15 +30,15 @@ export const CustomJewelleryModal: React.FC = () => {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-[#171717]/70 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-[#171717]/70 dark:bg-black/80 backdrop-blur-sm transition-opacity"
         onClick={() => setIsCustomModalOpen(false)}
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl border border-[#E4D1A3] overflow-hidden z-10 animate-fadeIn my-8">
+      <div className="relative w-full max-w-xl bg-white dark:bg-[#1B1A18] rounded-2xl shadow-2xl border border-[#E4D1A3] dark:border-[#C6A15B]/40 overflow-hidden z-10 animate-fadeIn my-8">
         
         {/* Header */}
-        <div className="bg-[#171717] text-white p-6 relative">
+        <div className="bg-[#171717] dark:bg-[#111110] text-white p-6 relative border-b border-transparent dark:border-[#C6A15B]/25">
           <button
             type="button"
             onClick={() => setIsCustomModalOpen(false)}
@@ -65,13 +65,13 @@ export const CustomJewelleryModal: React.FC = () => {
         <form onSubmit={handleOpenWhatsApp} className="p-6 sm:p-8 space-y-4">
           
           <div>
-            <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] mb-1">
+            <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] dark:text-[#F5EFE6] mb-1">
               {t.customModal.typeLabel}
             </label>
             <select
               value={jewelleryType}
               onChange={(e) => setJewelleryType(e.target.value)}
-              className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] border border-[#E4D1A3] rounded text-[#171717] focus:outline-none focus:border-[#C6A15B]"
+              className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] dark:bg-[#141413] border border-[#E4D1A3] dark:border-[#C6A15B]/35 rounded text-[#171717] dark:text-[#F5EFE6] focus:outline-none focus:border-[#C6A15B]"
             >
               <option value="Custom 925 Silver Pendant">{t.customModal.types.pendant}</option>
               <option value="Custom 925 Silver Signet / Band Ring">{t.customModal.types.ring}</option>
@@ -84,13 +84,13 @@ export const CustomJewelleryModal: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] mb-1">
+              <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] dark:text-[#F5EFE6] mb-1">
                 {t.customModal.weightLabel}
               </label>
               <select
                 value={targetWeight}
                 onChange={(e) => setTargetWeight(e.target.value)}
-                className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] border border-[#E4D1A3] rounded text-[#171717] focus:outline-none focus:border-[#C6A15B]"
+                className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] dark:bg-[#141413] border border-[#E4D1A3] dark:border-[#C6A15B]/35 rounded text-[#171717] dark:text-[#F5EFE6] focus:outline-none focus:border-[#C6A15B]"
               >
                 <option value="Lightweight (5 - 10 grams)">{t.customModal.weights.light}</option>
                 <option value="Medium (10 - 25 grams)">{t.customModal.weights.medium}</option>
@@ -101,7 +101,7 @@ export const CustomJewelleryModal: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] mb-1">
+              <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] dark:text-[#F5EFE6] mb-1">
                 {t.customModal.engravingLabel}
               </label>
               <input
@@ -109,13 +109,13 @@ export const CustomJewelleryModal: React.FC = () => {
                 placeholder={t.customModal.engravingPlaceholder}
                 value={engraving}
                 onChange={(e) => setEngraving(e.target.value)}
-                className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] border border-[#E4D1A3] rounded text-[#171717] focus:outline-none focus:border-[#C6A15B]"
+                className="w-full px-4 py-2.5 text-sm bg-[#F8F5EF] dark:bg-[#141413] border border-[#E4D1A3] dark:border-[#C6A15B]/35 rounded text-[#171717] dark:text-[#F5EFE6] placeholder-[#999999] dark:placeholder-[#777777] focus:outline-none focus:border-[#C6A15B]"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] mb-1">
+            <label className="block text-xs uppercase tracking-wider font-semibold text-[#171717] dark:text-[#F5EFE6] mb-1">
               {t.customModal.notesLabel}
             </label>
             <textarea
@@ -123,14 +123,14 @@ export const CustomJewelleryModal: React.FC = () => {
               placeholder={t.customModal.notesPlaceholder}
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              className="w-full px-4 py-2 text-sm bg-[#F8F5EF] border border-[#E4D1A3] rounded text-[#171717] focus:outline-none focus:border-[#C6A15B]"
+              className="w-full px-4 py-2 text-sm bg-[#F8F5EF] dark:bg-[#141413] border border-[#E4D1A3] dark:border-[#C6A15B]/35 rounded text-[#171717] dark:text-[#F5EFE6] placeholder-[#999999] dark:placeholder-[#777777] focus:outline-none focus:border-[#C6A15B]"
             />
           </div>
 
           <div className="pt-2">
             <button
               type="submit"
-              className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#171717] hover:bg-[#C6A15B] text-[#E4D1A3] hover:text-[#171717] text-xs font-semibold uppercase tracking-wider rounded transition-colors shadow-md cursor-pointer"
+              className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-[#171717] dark:bg-[#C6A15B] hover:bg-[#C6A15B] dark:hover:bg-[#E4D1A3] text-[#E4D1A3] dark:text-[#171717] hover:text-[#171717] text-xs font-semibold uppercase tracking-wider rounded transition-colors shadow-md cursor-pointer"
             >
               <MessageCircle className="w-4 h-4 fill-current" />
               <span>{t.customModal.submitBtn}</span>

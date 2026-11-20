@@ -18,7 +18,7 @@ export const Testimonials: React.FC = () => {
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-[#F8F5EF] border-b border-[#E4D1A3]/30">
+    <section className="py-16 sm:py-24 bg-[#F8F5EF] dark:bg-[#121212] border-b border-[#E4D1A3]/30 dark:border-[#C6A15B]/20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header with Framer Motion */}
@@ -32,7 +32,7 @@ export const Testimonials: React.FC = () => {
           <span className="text-xs uppercase tracking-[0.25em] text-[#C6A15B] font-semibold block mb-2">
             {t.testimonials.badge}
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#171717] font-normal tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#171717] dark:text-[#F5EFE6] font-normal tracking-tight">
             {t.testimonials.title}
           </h2>
           <motion.div
@@ -44,7 +44,7 @@ export const Testimonials: React.FC = () => {
           />
 
           {/* Explicit demo badge */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-50/90 border border-amber-200/60 rounded text-[11px] text-amber-900/80 mt-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-50/90 dark:bg-[#242018] border border-amber-200/60 dark:border-[#C6A15B]/30 rounded text-[11px] text-amber-900/80 dark:text-[#E4D1A3] mt-2">
             <Info className="w-3.5 h-3.5 text-[#C6A15B]" />
             <span>{t.testimonials.demoNotice}</span>
           </div>
@@ -63,40 +63,40 @@ export const Testimonials: React.FC = () => {
                 delay: idx * 0.12,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className={`bg-white rounded-xl p-7 border border-[#E4D1A3]/60 shadow-xs hover:shadow-md transition-shadow relative flex flex-col justify-between ${
-                idx === currentIndex ? 'block' : 'hidden md:flex'
-              }`}
+              className={idx === currentIndex ? 'block md:h-full' : 'hidden md:block md:h-full'}
             >
-              <div>
-                {/* Quote Icon & Stars */}
-                <div className="flex items-center justify-between mb-5">
-                  <div className="flex items-center gap-1 text-[#C6A15B]">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current" />
-                    ))}
+              <div className="bg-white dark:bg-[#1E1D1B] rounded-xl p-7 border border-[#E4D1A3]/60 dark:border-[#C6A15B]/30 shadow-xs relative flex flex-col justify-between h-full luxury-card-lift transition-colors duration-300">
+                <div>
+                  {/* Quote Icon & Stars */}
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="flex items-center gap-1 text-[#C6A15B]">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-current" />
+                      ))}
+                    </div>
+                    <Quote className="w-6 h-6 text-[#E4D1A3] dark:text-[#C6A15B]/45" />
                   </div>
-                  <Quote className="w-6 h-6 text-[#E4D1A3]" />
+
+                  {/* Comment */}
+                  <p className="font-serif text-base sm:text-lg text-[#333333] dark:text-[#DFD8CC] italic leading-relaxed mb-6 font-normal">
+                    &ldquo;{item.comment}&rdquo;
+                  </p>
                 </div>
 
-                {/* Comment */}
-                <p className="font-serif text-base sm:text-lg text-[#333333] italic leading-relaxed mb-6 font-normal">
-                  &ldquo;{item.comment}&rdquo;
-                </p>
-              </div>
-
-              {/* Author & Piece */}
-              <div className="pt-4 border-t border-[#E4D1A3]/40">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="text-sm font-semibold text-[#171717]">{item.name}</h4>
-                    <p className="text-xs text-[#777777]">{item.location}</p>
+                {/* Author & Piece */}
+                <div className="pt-4 border-t border-[#E4D1A3]/40 dark:border-[#C6A15B]/25">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h4 className="text-sm font-semibold text-[#171717] dark:text-[#F5EFE6]">{item.name}</h4>
+                      <p className="text-xs text-[#777777] dark:text-[#A8A298]">{item.location}</p>
+                    </div>
+                    <span className="text-[10px] text-[#C6A15B] uppercase tracking-wider font-medium">
+                      {t.testimonials.verifiedSilver}
+                    </span>
                   </div>
-                  <span className="text-[10px] text-[#C6A15B] uppercase tracking-wider font-medium">
-                    {t.testimonials.verifiedSilver}
-                  </span>
-                </div>
-                <div className="mt-2 text-[11px] text-[#999999] bg-[#F8F5EF] px-2.5 py-1 rounded">
-                  {item.itemPurchased}
+                  <div className="mt-2 text-[11px] text-[#999999] dark:text-[#CFC8BC] bg-[#F8F5EF] dark:bg-[#272522] px-2.5 py-1 rounded">
+                    {item.itemPurchased}
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -108,18 +108,18 @@ export const Testimonials: React.FC = () => {
           <button
             type="button"
             onClick={prev}
-            className="p-2 bg-white border border-[#E4D1A3] rounded-full text-[#171717] cursor-pointer"
+            className="p-2 bg-white dark:bg-[#1E1D1B] border border-[#E4D1A3] dark:border-[#C6A15B]/40 rounded-full text-[#171717] dark:text-[#F5EFE6] cursor-pointer"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <span className="text-xs text-[#777777] font-mono">
+          <span className="text-xs text-[#777777] dark:text-[#A8A298] font-mono">
             {currentIndex + 1} / {testimonials.length}
           </span>
           <button
             type="button"
             onClick={next}
-            className="p-2 bg-white border border-[#E4D1A3] rounded-full text-[#171717] cursor-pointer"
+            className="p-2 bg-white dark:bg-[#1E1D1B] border border-[#E4D1A3] dark:border-[#C6A15B]/40 rounded-full text-[#171717] dark:text-[#F5EFE6] cursor-pointer"
             aria-label="Next testimonial"
           >
             <ChevronRight className="w-5 h-5" />

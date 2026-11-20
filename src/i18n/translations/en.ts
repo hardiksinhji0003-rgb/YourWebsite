@@ -23,6 +23,11 @@ export const en = {
     wishlistLabel: 'Your Wishlist',
     bagLabel: 'Your Bag',
     enquire: 'Enquire',
+    switchToDark: 'Switch to Dark Mode',
+    switchToLight: 'Switch to Light Mode',
+    darkModeLabel: 'Dark Mode',
+    lightModeLabel: 'Light Mode',
+    menu: 'Menu',
   },
 
   // Hero Section
@@ -456,6 +461,41 @@ export const en = {
     close: 'Close',
   },
 
+  // FAQ Accordion Section
+  faq: {
+    badge: 'FREQUENTLY ASKED QUESTIONS',
+    title: 'Silver & Atelier Guide',
+    subtitle: 'Clear answers regarding our 925 sterling silver purity, bespoke designs, and Dahegam boutique.',
+    expandAll: 'Expand All',
+    collapseAll: 'Collapse All',
+    items: [
+      {
+        question: 'Is all jewellery at Gujarat Orna made from Pure 925 Sterling Silver?',
+        answer: 'Yes. Every pure silver piece showcases authentic 925 sterling silver hallmarking with 92.5% certified fine silver alloyed for lifelong durability and carries an official hallmark inspection stamp.',
+      },
+      {
+        question: 'Can I request a custom 925 silver jewellery design?',
+        answer: 'Yes. At our Bespoke Silver Atelier, you can share reference images, sketches, or ideas for custom pendants, family signet rings, necklaces, kadas, or chains via WhatsApp or our design form. Our artisans assess proportions and silver weight, and custom pieces proceed only after mutual design confirmation before casting begins.',
+      },
+      {
+        question: 'How is the final price of silver jewellery determined?',
+        answer: 'Website catalog rates represent baseline sample estimates. Exact pricing reflects real-time bullion valuations, net silver weight, and craftsmanship complexity.',
+      },
+      {
+        question: 'How should I care for my 925 sterling silver jewellery?',
+        answer: 'Store your silver jewellery in an airtight pouch or soft jewellery box away from humidity when not in use, wipe gently with a soft microfiber cloth to restore its natural mirror luster, and avoid direct contact with perfumes, chlorine pools, and harsh household chemicals.',
+      },
+      {
+        question: 'Where is the Gujarat Orna showroom located and when can I visit?',
+        answer: 'Our flagship showroom by Gujarat Jewellers is located Opposite Taluka Seva Sadan, Dahegam, Gujarat, India. Visiting hours are Monday to Saturday from 10:30 AM to 8:30 PM, and Sunday by prior appointment.',
+      },
+      {
+        question: 'How can I enquire about availability, sizes, or placing an order?',
+        answer: 'You can add preferred pieces to your Shopping Bag or Wishlist and click Enquire on WhatsApp, or use our Contact form for assistance with pricing, sizing, availability, insured shipping, or Dahegam in-store pickup.',
+      },
+    ],
+  },
+
   // Notification Toasts
   toast: {
     addedToBag: 'Added "{name}" to your shopping bag.',
@@ -463,5 +503,7 @@ export const en = {
     savedToWishlist: 'Saved "{name}" to your wishlist.',
     removedFromWishlist: 'Removed piece from your wishlist.',
     languageChanged: 'Language changed to English',
+    themeDark: 'Dark luxury theme enabled',
+    themeLight: 'Light ivory theme enabled',
   },
 };
