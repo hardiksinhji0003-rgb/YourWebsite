@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Heart, ShoppingBag, Menu, X, MessageCircle, Sparkles, ChevronRight } from 'lucide-react';
+import { Heart, ShoppingBag, Menu, X, MessageCircle, Sparkles, ChevronRight } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { useLanguage } from '../context/LanguageContext';
 import { BUSINESS_CONFIG, getWhatsAppUrl } from '../data/businessConfig';
@@ -16,8 +16,6 @@ export const Header: React.FC = () => {
     wishlistCount,
     setIsCartOpen,
     setIsWishlistOpen,
-    searchQuery,
-    setSearchQuery,
     setSelectedCategory,
   } = useShop();
 
@@ -25,7 +23,6 @@ export const Header: React.FC = () => {
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -85,7 +82,7 @@ export const Header: React.FC = () => {
   return (
     <>
       {/* Top Luxury Micro Announcement Ribbon */}
-      <div className="bg-[#171717] dark:bg-[#0D0D0D] text-[#E4D1A3] py-1.5 sm:py-2 px-3 sm:px-4 text-center text-[10px] sm:text-xs tracking-[0.08em] sm:tracking-[0.18em] uppercase border-b border-[#C6A15B]/35 dark:border-[#C6A15B]/25 transition-colors duration-300">
+      <div className="w-full bg-[#171717] dark:bg-[#0D0D0D] text-[#E4D1A3] py-1.5 sm:py-2 px-3 sm:px-4 text-center text-[10px] sm:text-xs tracking-[0.08em] sm:tracking-[0.18em] uppercase border-b border-[#C6A15B]/35 dark:border-[#C6A15B]/25 transition-colors duration-300">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-4">
           <span className="hidden lg:inline-flex items-center gap-1.5 text-white/75 tracking-[0.14em] shrink-0">
             <span className="w-1.5 h-1.5 rotate-45 bg-[#C6A15B]" />
@@ -109,7 +106,7 @@ export const Header: React.FC = () => {
 
       {/* Main Sticky Luxury Header */}
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 ${
+        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           isScrolled
             ? 'bg-[#F8F5EF]/95 dark:bg-[#171717]/95 backdrop-blur-md shadow-[0_8px_30px_rgba(23,23,23,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.45)] border-b border-[#C6A15B]/45 dark:border-[#C6A15B]/30 py-2.5 sm:py-3'
             : 'bg-[#F8F5EF]/92 dark:bg-[#171717]/92 backdrop-blur-xs border-b border-[#E4D1A3]/50 dark:border-[#C6A15B]/25 py-3 sm:py-4'
@@ -162,17 +159,6 @@ export const Header: React.FC = () => {
 
               {/* Language Selector Dropdown */}
               <LanguageSwitcher />
-
-              {/* Search Button (All screens) */}
-              <button
-                type="button"
-                onClick={() => setIsSearchOpen(!isSearchOpen)}
-                className="flex p-1.5 sm:p-2 text-[#202020] dark:text-[#E8E2D6] hover:text-[#C6A15B] hover:bg-[#E4D1A3]/20 dark:hover:bg-[#C6A15B]/15 rounded-full transition-colors cursor-pointer shrink-0"
-                aria-label={t.nav.searchLabel}
-                title={t.nav.searchLabel}
-              >
-                <Search className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
-              </button>
 
               {/* Wishlist Button */}
               <button
@@ -238,32 +224,6 @@ export const Header: React.FC = () => {
               </a>
             </div>
           </div>
-
-          {/* Collapsible Luxury Search Bar */}
-          {isSearchOpen && (
-            <div className="pt-3 pb-2 mt-3 border-t border-[#E4D1A3]/40 dark:border-[#C6A15B]/25 animate-fadeIn">
-              <div className="relative max-w-xl mx-auto">
-                <input
-                  type="text"
-                  placeholder={t.nav.searchPlaceholder}
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-16 py-2.5 text-sm bg-white dark:bg-[#22211F] border border-[#C6A15B]/60 dark:border-[#C6A15B]/45 rounded-full focus:outline-none focus:ring-2 focus:ring-[#C6A15B]/30 text-[#202020] dark:text-[#F5EFE6] placeholder-[#777777] dark:placeholder-[#9A948A] shadow-inner"
-                  autoFocus
-                />
-                <Search className="w-4 h-4 text-[#C6A15B] absolute left-3.5 top-3.5" />
-                {searchQuery && (
-                  <button
-                    type="button"
-                    onClick={() => setSearchQuery('')}
-                    className="absolute right-4 top-3 text-xs text-[#777777] dark:text-[#A8A298] hover:text-[#171717] dark:hover:text-[#F5EFE6] font-medium cursor-pointer"
-                  >
-                    {t.nav.clear}
-                  </button>
-                )}
-              </div>
-            </div>
-          )}
         </div>
 
         {/* Reading & Scroll Progress Indicator */}

@@ -32,12 +32,12 @@ export default function App() {
     <ThemeProvider>
       <LanguageProvider>
         <ShopProvider>
-          <div className="min-h-screen bg-[#F8F5EF] dark:bg-[#121212] text-[#202020] dark:text-[#F5EFE6] flex flex-col selection:bg-[#E4D1A3] selection:text-[#171717] transition-colors duration-300">
+          <div className="min-h-screen w-full max-w-full overflow-x-clip bg-[#F8F5EF] dark:bg-[#121212] text-[#202020] dark:text-[#F5EFE6] flex flex-col selection:bg-[#E4D1A3] selection:text-[#171717] transition-colors duration-300">
           {/* Sticky Header with Navigation */}
           <Header />
 
           {/* Main Content Sections */}
-          <main className="flex-grow">
+          <main className="flex-grow w-full">
             {/* 1. Hero Section */}
             <Hero />
 

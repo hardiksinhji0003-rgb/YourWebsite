@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
   const [activeModal, setActiveModal] = useState<'privacy' | 'terms' | null>(null);
 
   return (
-    <footer className="bg-[#171717] dark:bg-[#0C0C0C] text-[#AAAAAA] pt-16 pb-12 border-t border-[#C6A15B]/30 relative overflow-hidden transition-colors duration-300">
+    <footer className="w-full bg-[#171717] dark:bg-[#0C0C0C] text-[#AAAAAA] pt-16 pb-12 border-t border-[#C6A15B]/30 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Grid */}
@@ -16,19 +16,19 @@ export const Footer: React.FC = () => {
           
           {/* Brand Column (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="flex items-center gap-3.5">
-              <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-[#C6A15B]/75 bg-[#171717] shadow-lg shrink-0">
+            <div className="flex items-center gap-3.5 min-w-0">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden ring-2 ring-[#C6A15B]/75 bg-[#171717] shadow-lg shrink-0">
                 <img
                   src="/assets/aistudio/image_81f67cfc.png"
                   alt="Gujarat Orna Official Crest Logo"
                   className="w-full h-full object-cover object-center"
                 />
               </div>
-              <div>
-                <span className="font-serif text-2xl sm:text-3xl tracking-[0.16em] font-medium text-white block leading-none">
+              <div className="min-w-0">
+                <span className="font-serif text-xl min-[380px]:text-2xl sm:text-3xl tracking-[0.12em] sm:tracking-[0.16em] font-medium text-white block leading-none">
                   {BUSINESS_CONFIG.brandName}
                 </span>
-                <span className="text-xs tracking-[0.25em] text-[#C6A15B] uppercase block mt-1.5">
+                <span className="text-[11px] sm:text-xs tracking-[0.2em] sm:tracking-[0.25em] text-[#C6A15B] uppercase block mt-1.5">
                   {BUSINESS_CONFIG.parentBrand}
                 </span>
               </div>

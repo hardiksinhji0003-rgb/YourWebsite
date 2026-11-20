@@ -7,17 +7,45 @@
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
+  html {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-x: clip;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #C6A15B #F8F5EF;
+  }
+
+  html.dark {
+    scrollbar-color: #C6A15B #121212;
+  }
+
   body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
     font-family: var(--font-sans);
     background-color: #F8F5EF;
     color: #202020;
     overflow-x: hidden;
+    overflow-x: clip;
     transition: background-color 0.35s ease, color 0.35s ease;
   }
 
+  html.dark body,
   .dark body {
     background-color: #121212;
     color: #F5EFE6;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
   }
 
   h1, h2, h3, .font-serif {
@@ -167,6 +195,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   body,
   .luxury-card-lift,
   .luxury-card-lift-dark {
@@ -183,24 +215,39 @@
   }
 }
 
-/* Custom luxury subtle scrollbars */
+/* Custom luxury subtle scrollbars flush with viewport edge */
+html::-webkit-scrollbar,
 ::-webkit-scrollbar {
   width: 8px;
+  height: 0px;
 }
 
+html::-webkit-scrollbar-track,
 ::-webkit-scrollbar-track {
   background: #F8F5EF;
 }
 
+html.dark::-webkit-scrollbar-track,
 .dark ::-webkit-scrollbar-track {
-  background: #171717;
+  background: #121212;
 }
 
+html::-webkit-scrollbar-thumb,
 ::-webkit-scrollbar-thumb {
   background: #C6A15B;
-  border-radius: 4px;
+  border-radius: 9999px;
 }
 
+html::-webkit-scrollbar-thumb:hover,
 ::-webkit-scrollbar-thumb:hover {
   background: #B38F46;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
