@@ -57,7 +57,7 @@ export const BackToTop: React.FC = () => {
       onClick={scrollToTop}
       aria-hidden={!isVisible}
       tabIndex={isVisible ? 0 : -1}
-      className={`group fixed bottom-4 right-3 sm:bottom-5 sm:right-4 left-auto z-30 w-12 h-12 rounded-full bg-[#171717]/95 dark:bg-[#22211F]/95 backdrop-blur-xs text-[#E4D1A3] hover:text-white shadow-[0_10px_28px_rgba(23,23,23,0.28)] dark:shadow-[0_10px_28px_rgba(0,0,0,0.65)] transition-all duration-300 flex items-center justify-center focus:outline-none cursor-pointer ${
+      className={`group fixed bottom-4 left-3 sm:bottom-5 sm:left-4 right-auto z-30 w-12 h-12 rounded-full bg-[#171717]/95 dark:bg-[#22211F]/95 backdrop-blur-xs text-[#E4D1A3] hover:text-white shadow-[0_10px_28px_rgba(23,23,23,0.28)] dark:shadow-[0_10px_28px_rgba(0,0,0,0.65)] transition-all duration-300 flex items-center justify-center focus:outline-none cursor-pointer ${
         isVisible
           ? 'opacity-100 translate-y-0 pointer-events-auto hover:-translate-y-1'
           : 'opacity-0 translate-y-4 pointer-events-none'

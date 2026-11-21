@@ -26,7 +26,7 @@ export const Hero: React.FC = () => {
         <img
           src={HERO_BG_IMG}
           alt="Gujarat Orna by Gujarat Jewellers Dahegam showroom interior"
-          className="w-full h-full object-cover object-[52%_58%] sm:object-[50%_62%] lg:object-[50%_64%]"
+          className="w-full h-[calc(100%+28px)] -mt-3.5 object-cover object-[52%_58%] sm:object-[50%_62%] lg:object-[50%_64%] animate-float-hero-bg"
           loading="eager"
           referrerPolicy="no-referrer"
         />

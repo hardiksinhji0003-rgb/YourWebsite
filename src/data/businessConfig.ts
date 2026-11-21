@@ -16,9 +16,8 @@ export const BUSINESS_CONFIG = {
     instagramUrl: 'https://www.instagram.com/gujaratorna/',
   },
   whatsapp: {
-    // Configurable number; placeholder until real verified business number is set
-    phoneNumber: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_WHATSAPP_NUMBER) || '919825000000',
-    displayNumber: '+91 98250 00000 (Demo Support)',
+    phoneNumber: (typeof import.meta !== 'undefined' && import.meta.env?.VITE_WHATSAPP_NUMBER) || '919104523657',
+    displayNumber: '+91 91045 23657',
   },
   specialities: [
     'Pure 925 Silver Jewellery',
@@ -37,6 +36,19 @@ export function getWhatsAppUrl(customMessage?: string): string {
   const number = BUSINESS_CONFIG.whatsapp.phoneNumber.replace(/[^0-9]/g, '');
   const message = customMessage || 'Hello Gujarat Orna! I would like to inquire about your 925 Silver Jewellery collections.';
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+}
+
+/**
+ * Opens direct WhatsApp chat via anchor navigation (avoids popup blockers in embedded views)
+ */
+export function openWhatsAppChat(url: string): void {
+  const link = document.createElement('a');
+  link.href = url;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 export function getProductWhatsAppUrl(productName: string, productCategory?: string, price?: number): string {

@@ -53,10 +53,7 @@ export const ContactSection: React.FC = () => {
     }
   };
 
-  const handleForwardToWhatsApp = () => {
-    const msg = `Hello Gujarat Orna!\nMy Name: ${formData.fullName}\nPhone: ${formData.phoneNumber}\nInterest: ${formData.jewelleryInterest}\n\nEnquiry:\n${formData.message}`;
-    window.open(getWhatsAppUrl(msg), '_blank');
-  };
+  const forwardWhatsAppMessage = `Hello Gujarat Orna!\nMy Name: ${formData.fullName}\nPhone: ${formData.phoneNumber}\nInterest: ${formData.jewelleryInterest}\n\nEnquiry:\n${formData.message}`;
 
   return (
     <section id="contact" className="py-16 sm:py-24 bg-[#FFFFFF] dark:bg-[#161616] border-b border-[#E4D1A3]/30 dark:border-[#C6A15B]/20 scroll-mt-16 overflow-x-clip transition-colors duration-300">
@@ -207,14 +204,15 @@ export const ContactSection: React.FC = () => {
                   </p>
 
                   <div className="pt-4">
-                    <button
-                      type="button"
-                      onClick={handleForwardToWhatsApp}
+                    <a
+                      href={getWhatsAppUrl(forwardWhatsAppMessage)}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-6 py-3 bg-[#171717] dark:bg-[#C6A15B] hover:bg-[#C6A15B] dark:hover:bg-[#E4D1A3] text-[#E4D1A3] dark:text-[#171717] hover:text-[#171717] rounded text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
                     >
                       <MessageCircle className="w-4 h-4 fill-current" />
                       <span>{t.contact.forwardWhatsAppBtn}</span>
-                    </button>
+                    </a>
                   </div>
 
                   <button

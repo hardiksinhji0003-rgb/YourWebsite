@@ -90,17 +90,17 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center gap-0.5 min-[390px]:gap-1 sm:gap-1.5 px-1.5 min-[390px]:px-2 sm:px-2.5 py-1 sm:py-1.5 text-[11px] sm:text-xs font-medium text-[#202020] dark:text-[#E8E2D6] hover:text-[#C6A15B] bg-white/75 dark:bg-[#22211F] hover:bg-white dark:hover:bg-[#2B2926] border border-[#E4D1A3] dark:border-[#C6A15B]/45 hover:border-[#C6A15B] rounded-full transition-all shadow-2xs group focus:outline-none cursor-pointer shrink-0"
+        className="inline-flex items-center gap-0.5 min-[390px]:gap-1 sm:gap-1.5 px-1.5 min-[390px]:px-2 sm:px-2.5 py-1 sm:py-1.5 text-[11px] sm:text-xs font-medium text-[#FAF4E8] hover:text-[#E4D1A3] bg-[#1E050A]/55 hover:bg-[#5E1624]/80 border border-[#C6A15B]/60 hover:border-[#E4D1A3] rounded-full transition-all shadow-2xs group focus:outline-none cursor-pointer shrink-0"
         aria-expanded={isOpen}
         aria-haspopup="true"
         title="Select Language"
       >
-        <Globe className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C6A15B] group-hover:rotate-12 transition-transform duration-300 shrink-0" />
+        <Globe className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#E4D1A3] group-hover:rotate-12 transition-transform duration-300 shrink-0" />
         <span className="sm:hidden font-semibold tracking-wide">{currentOption.shortLabel}</span>
         <span className="hidden sm:inline font-semibold tracking-wide">{currentOption.nativeName}</span>
         <ChevronDown
-          className={`w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#777777] dark:text-[#A8A298] transition-transform duration-200 ${
-            isOpen ? 'rotate-180 text-[#C6A15B]' : ''
+          className={`w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#E4D1A3]/80 transition-transform duration-200 ${
+            isOpen ? 'rotate-180 text-[#E4D1A3]' : ''
           }`}
         />
       </button>

@@ -1,6 +1,7 @@
 export type ProductCategory =
   | 'All'
   | 'Silver Necklaces'
+  | 'Silver Jewellery Sets'
   | 'Silver Pendants'
   | 'Silver Rings'
   | 'Silver Earrings'

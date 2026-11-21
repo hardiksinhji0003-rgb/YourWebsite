@@ -87,6 +87,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   const getLocalizedCollection = (collection: CollectionItem) => {
     const keyMap: Record<string, keyof TranslationSchema['collections']['items']> = {
       'silver-necklaces': 'necklaces',
+      'silver-jewellery-sets': 'jewellerySets',
       'silver-pendants': 'pendants',
       'silver-rings': 'rings',
       'silver-earrings': 'earrings',

@@ -1,8 +1,5 @@
 import { CollectionItem } from '../types';
 
-import colRingsImg from '../assets/images/col_silver_rings_1793634710666.jpg';
-import colEarringsImg from '../assets/images/col_silver_earrings_1793634667497.jpg';
-
 export const COLLECTIONS_DATA: CollectionItem[] = [
   {
     id: 'silver-necklaces',
@@ -20,20 +17,22 @@ export const COLLECTIONS_DATA: CollectionItem[] = [
     title: 'Silver Rings',
     subtitle: 'Sculpted bands, signets & floral motifs',
     categoryKey: 'Silver Rings',
-    image: colRingsImg,
+    image: '/assets/aistudio/image_0de5d0a7.png',
     imageFit: 'cover',
+    imagePosition: 'object-[50%_54%]',
     itemCount: 32,
     tagline: 'Comfort-fit 925 Silver rings designed for daily elegance.',
   },
   {
-    id: 'silver-earrings',
-    title: 'Silver Earrings',
-    subtitle: 'Filigree jhumkis, chandelier drops & stud accents',
-    categoryKey: 'Silver Earrings',
-    image: colEarringsImg,
+    id: 'silver-jewellery-sets',
+    title: 'Silver Jewellery Sets',
+    subtitle: 'Matching floral 925 silver necklaces, earrings & gift box sets',
+    categoryKey: 'Silver Jewellery Sets',
+    image: '/assets/aistudio/image_41bcd010.png',
     imageFit: 'cover',
-    itemCount: 28,
-    tagline: 'Lightweight hallmarked silver earrings for celebrations and everyday grace.',
+    imagePosition: 'object-[50%_24%]',
+    itemCount: 24,
+    tagline: 'Coordinated pure 925 silver necklace and earring sets crafted for weddings, gifting, and celebrations.',
   },
   {
     id: 'silver-chains',

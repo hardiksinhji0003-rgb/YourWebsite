@@ -7,6 +7,16 @@
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
+  html[lang='gu'] {
+    --font-serif: 'Noto Serif Gujarati', 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Hind Vadodara', 'Noto Sans Gujarati', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  html[lang='hi'] {
+    --font-serif: 'Noto Serif Devanagari', 'Tiro Devanagari Hindi', 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Noto Sans Devanagari', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
   html {
     width: 100%;
     max-width: 100%;
@@ -33,6 +43,7 @@
     color: #202020;
     overflow-x: hidden;
     overflow-x: clip;
+    text-rendering: optimizeLegibility;
     transition: background-color 0.35s ease, color 0.35s ease;
   }
 
@@ -48,9 +59,60 @@
     overflow-x: clip;
   }
 
-  h1, h2, h3, .font-serif {
+  h1, h2, h3, h4, .font-serif {
     font-family: var(--font-serif);
   }
+}
+
+/* Premium Indic Editorial Hierarchy: Headings & Sub-headings for Gujarati & Hindi */
+html[lang='gu'] h1,
+html[lang='hi'] h1 {
+  font-family: var(--font-serif);
+  line-height: 1.26;
+  letter-spacing: 0em;
+  font-weight: 600;
+}
+
+html[lang='gu'] h2,
+html[lang='hi'] h2 {
+  font-family: var(--font-serif);
+  line-height: 1.3;
+  letter-spacing: 0em;
+  font-weight: 600;
+}
+
+html[lang='gu'] h3,
+html[lang='gu'] h4,
+html[lang='hi'] h3,
+html[lang='hi'] h4 {
+  font-family: var(--font-serif);
+  line-height: 1.36;
+  letter-spacing: 0em;
+}
+
+/* Prevent synthetic oblique distortion on Gujarati/Devanagari italic accent lines */
+html[lang='gu'] h1 .italic,
+html[lang='gu'] h2 .italic,
+html[lang='hi'] h1 .italic,
+html[lang='hi'] h2 .italic {
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* Clean, readable sub-headings & body lines for Gujarati & Hindi */
+html[lang='gu'] main p,
+html[lang='hi'] main p {
+  font-family: var(--font-sans);
+  line-height: 1.75;
+  letter-spacing: 0.005em;
+}
+
+/* Preserve connected shirorekha & Indic ligatures in uppercase eyebrow sub-headings & nav */
+html[lang='gu'] main [class*='tracking-'],
+html[lang='gu'] header nav [class*='tracking-'],
+html[lang='hi'] main [class*='tracking-'],
+html[lang='hi'] header nav [class*='tracking-'] {
+  letter-spacing: 0.025em;
 }
 
 /* Custom luxury continuous floating keyframe animations */
@@ -81,6 +143,20 @@
   }
 }
 
+@keyframes floatHeroBg {
+  0%, 100% {
+    transform: translate3d(0, -6px, 0);
+  }
+  50% {
+    transform: translate3d(0, 6px, 0);
+  }
+}
+
+.animate-float-hero-bg {
+  animation: floatHeroBg 5s ease-in-out 0.3s infinite;
+  will-change: transform;
+}
+
 .animate-float-hero {
   animation: floatEditorial 4.2s ease-in-out 0s infinite;
   will-change: transform;
@@ -102,6 +178,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .animate-float-hero-bg,
   .animate-float-hero,
   .animate-float-seal,
   .animate-float-story,

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { X, MessageCircle, Sparkles } from 'lucide-react';
 import { useShop } from '../context/ShopContext';
 import { useLanguage } from '../context/LanguageContext';
-import { getCustomJewelleryWhatsAppUrl } from '../data/businessConfig';
+import { getCustomJewelleryWhatsAppUrl, openWhatsAppChat } from '../data/businessConfig';
 
 export const CustomJewelleryModal: React.FC = () => {
   const { isCustomModalOpen, setIsCustomModalOpen } = useShop();
@@ -22,7 +22,7 @@ export const CustomJewelleryModal: React.FC = () => {
     }${notes ? `\nDesign Details: ${notes}` : ''}`;
 
     const url = getCustomJewelleryWhatsAppUrl(details);
-    window.open(url, '_blank');
+    openWhatsAppChat(url);
     setIsCustomModalOpen(false);
   };
 

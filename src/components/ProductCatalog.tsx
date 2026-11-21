@@ -26,6 +26,7 @@ export const ProductCatalog: React.FC = () => {
   const categories: ProductCategory[] = [
     'All',
     'Silver Necklaces',
+    'Silver Jewellery Sets',
     'Silver Pendants',
     'Silver Rings',
     'Silver Earrings',

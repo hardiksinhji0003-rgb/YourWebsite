@@ -82,9 +82,9 @@ export const Header: React.FC = () => {
   return (
     <>
       {/* Top Luxury Micro Announcement Ribbon */}
-      <div className="w-full bg-[#171717] dark:bg-[#0D0D0D] text-[#E4D1A3] py-1.5 sm:py-2 px-3 sm:px-4 text-center text-[10px] sm:text-xs tracking-[0.08em] sm:tracking-[0.18em] uppercase border-b border-[#C6A15B]/35 dark:border-[#C6A15B]/25 transition-colors duration-300">
+      <div className="w-full bg-[#1B0409] dark:bg-[#130306] text-[#E4D1A3] py-1.5 sm:py-2 px-3 sm:px-4 text-center text-[10px] sm:text-xs tracking-[0.08em] sm:tracking-[0.18em] uppercase border-b border-[#C6A15B]/40 transition-colors duration-300">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3 sm:gap-4">
-          <span className="hidden lg:inline-flex items-center gap-1.5 text-white/75 tracking-[0.14em] shrink-0">
+          <span className="hidden lg:inline-flex items-center gap-1.5 text-[#F4E9D7]/80 tracking-[0.14em] shrink-0">
             <span className="w-1.5 h-1.5 rotate-45 bg-[#C6A15B]" />
             {t.announcement.location}
           </span>
@@ -96,20 +96,20 @@ export const Header: React.FC = () => {
             href={getWhatsAppUrl()}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden lg:inline-flex items-center gap-1.5 text-[#C6A15B] hover:text-white transition-colors font-medium tracking-[0.14em] shrink-0"
+            className="hidden lg:inline-flex items-center gap-1.5 text-[#E4D1A3] hover:text-white transition-colors font-medium tracking-[0.14em] shrink-0"
           >
-            <MessageCircle className="w-3.5 h-3.5" />
+            <MessageCircle className="w-3.5 h-3.5 text-[#C6A15B]" />
             <span>{t.announcement.directWhatsApp}</span>
           </a>
         </div>
       </div>
 
-      {/* Main Sticky Luxury Header */}
+      {/* Main Sticky Luxury Header (Distinct Royal Velvet Burgundy & Champagne Gold) */}
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#F8F5EF]/95 dark:bg-[#171717]/95 backdrop-blur-md shadow-[0_8px_30px_rgba(23,23,23,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.45)] border-b border-[#C6A15B]/45 dark:border-[#C6A15B]/30 py-2.5 sm:py-3'
-            : 'bg-[#F8F5EF]/92 dark:bg-[#171717]/92 backdrop-blur-xs border-b border-[#E4D1A3]/50 dark:border-[#C6A15B]/25 py-3 sm:py-4'
+            ? 'bg-gradient-to-r from-[#24060D]/98 via-[#3E0C17]/98 to-[#24060D]/98 dark:from-[#180408]/98 dark:via-[#2B0710]/98 dark:to-[#180408]/98 backdrop-blur-lg shadow-[0_12px_36px_rgba(24,4,8,0.42)] border-b border-[#E4D1A3]/60 py-2.5 sm:py-3'
+            : 'bg-gradient-to-r from-[#2D0810]/96 via-[#4A101C]/96 to-[#2D0810]/96 dark:from-[#1E050A]/96 dark:via-[#340913]/96 dark:to-[#1E050A]/96 backdrop-blur-md shadow-[0_8px_28px_rgba(32,5,11,0.25)] border-b border-[#C6A15B]/50 py-3 sm:py-4'
         }`}
       >
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
@@ -117,7 +117,7 @@ export const Header: React.FC = () => {
             
             {/* Left: Uploaded Logo Medallion + Brand Wordmark */}
             <a href="#home" className="flex items-center gap-1.5 min-[390px]:gap-2 sm:gap-3 group min-w-0 shrink-0">
-              <div className="relative w-8 h-8 min-[390px]:w-9 min-[390px]:h-9 sm:w-11 sm:h-11 xl:w-12 xl:h-12 rounded-full overflow-hidden ring-2 ring-[#C6A15B]/85 ring-offset-1 sm:ring-offset-2 ring-offset-[#F8F5EF] dark:ring-offset-[#171717] bg-[#171717] shadow-md group-hover:ring-[#C6A15B] group-hover:scale-[1.04] transition-all duration-300 shrink-0">
+              <div className="relative w-8 h-8 min-[390px]:w-9 min-[390px]:h-9 sm:w-11 sm:h-11 xl:w-12 xl:h-12 rounded-full overflow-hidden ring-2 ring-[#E4D1A3]/90 ring-offset-1 sm:ring-offset-2 ring-offset-[#3B0C16] dark:ring-offset-[#26070E] bg-[#1B0409] shadow-md group-hover:ring-[#E4D1A3] group-hover:scale-[1.04] transition-all duration-300 shrink-0">
                 <img
                   src={BRAND_LOGO_URL}
                   alt="Gujarat Orna Official Crest Logo"
@@ -126,13 +126,13 @@ export const Header: React.FC = () => {
               </div>
 
               {/* Subtle Gold Hairline Divider */}
-              <div className="hidden sm:block h-8 w-[1px] bg-gradient-to-b from-transparent via-[#C6A15B]/65 to-transparent shrink-0" />
+              <div className="hidden sm:block h-8 w-[1px] bg-gradient-to-b from-transparent via-[#E4D1A3]/55 to-transparent shrink-0" />
 
               <div className="flex flex-col items-start">
-                <span className="font-serif text-[13px] min-[390px]:text-[15px] sm:text-xl xl:text-[22px] tracking-[0.06em] min-[390px]:tracking-[0.1em] sm:tracking-[0.16em] font-semibold text-[#171717] dark:text-[#F5EFE6] group-hover:text-[#C6A15B] transition-colors leading-none whitespace-nowrap">
+                <span className="font-serif text-[13px] min-[390px]:text-[15px] sm:text-xl xl:text-[22px] tracking-[0.06em] min-[390px]:tracking-[0.1em] sm:tracking-[0.16em] font-semibold text-[#FAF4E8] group-hover:text-[#E4D1A3] transition-colors leading-none whitespace-nowrap">
                   {BUSINESS_CONFIG.brandName}
                 </span>
-                <span className="text-[7px] min-[390px]:text-[8px] sm:text-[10px] tracking-[0.1em] min-[390px]:tracking-[0.15em] sm:tracking-[0.24em] text-[#8A6D3B] dark:text-[#C6A15B] uppercase font-sans mt-0.5 sm:mt-1 font-medium whitespace-nowrap">
+                <span className="text-[7px] min-[390px]:text-[8px] sm:text-[10px] tracking-[0.1em] min-[390px]:tracking-[0.15em] sm:tracking-[0.24em] text-[#E4D1A3] uppercase font-sans mt-0.5 sm:mt-1 font-medium whitespace-nowrap">
                   {BUSINESS_CONFIG.parentBrand}
                 </span>
               </div>
@@ -145,7 +145,7 @@ export const Header: React.FC = () => {
                   key={link.href}
                   href={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-xs 2xl:text-[13px] font-medium tracking-[0.05em] uppercase text-[#202020] dark:text-[#E8E2D6] hover:text-[#C6A15B] transition-colors relative py-1.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1.5px] after:bg-[#C6A15B] hover:after:w-full after:transition-all after:duration-300 whitespace-nowrap"
+                  className="text-xs 2xl:text-[13px] font-medium tracking-[0.05em] uppercase text-[#F6ECE0] hover:text-[#E4D1A3] transition-colors relative py-1.5 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-[1.5px] after:bg-[#E4D1A3] hover:after:w-full after:transition-all after:duration-300 whitespace-nowrap"
                 >
                   {link.name}
                 </a>
@@ -164,13 +164,13 @@ export const Header: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setIsWishlistOpen(true)}
-                className="relative p-1.5 sm:p-2 text-[#202020] dark:text-[#E8E2D6] hover:text-[#C6A15B] hover:bg-[#E4D1A3]/20 dark:hover:bg-[#C6A15B]/15 rounded-full transition-colors cursor-pointer shrink-0"
+                className="relative p-1.5 sm:p-2 text-[#FAF4E8] hover:text-[#E4D1A3] hover:bg-white/10 rounded-full transition-colors cursor-pointer shrink-0"
                 aria-label={t.nav.wishlistLabel}
                 title={t.nav.wishlistLabel}
               >
                 <Heart className="w-4 h-4 sm:w-5 sm:h-5" />
                 {wishlistCount > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 sm:top-0.5 sm:right-0.5 flex items-center justify-center min-w-[15px] h-[15px] sm:min-w-[17px] sm:h-[17px] px-1 text-[9px] sm:text-[10px] font-semibold text-[#171717] bg-[#E4D1A3] border border-[#C6A15B] rounded-full tabular-nums shadow-2xs">
+                  <span className="absolute -top-0.5 -right-0.5 sm:top-0.5 sm:right-0.5 flex items-center justify-center min-w-[15px] h-[15px] sm:min-w-[17px] sm:h-[17px] px-1 text-[9px] sm:text-[10px] font-bold text-[#24060D] bg-[#FAF4E8] border border-[#C6A15B] rounded-full tabular-nums shadow-2xs">
                     {wishlistCount}
                   </span>
                 )}
@@ -180,13 +180,13 @@ export const Header: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setIsCartOpen(true)}
-                className="relative p-1.5 sm:p-2 text-[#202020] dark:text-[#E8E2D6] hover:text-[#C6A15B] hover:bg-[#E4D1A3]/20 dark:hover:bg-[#C6A15B]/15 rounded-full transition-colors cursor-pointer shrink-0"
+                className="relative p-1.5 sm:p-2 text-[#FAF4E8] hover:text-[#E4D1A3] hover:bg-white/10 rounded-full transition-colors cursor-pointer shrink-0"
                 aria-label={t.nav.bagLabel}
                 title={t.nav.bagLabel}
               >
                 <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 sm:top-0.5 sm:right-0.5 flex items-center justify-center min-w-[15px] h-[15px] sm:min-w-[17px] sm:h-[17px] px-1 text-[9px] sm:text-[10px] font-bold text-white dark:text-[#171717] bg-[#171717] dark:bg-[#C6A15B] rounded-full tabular-nums border border-[#C6A15B] shadow-2xs">
+                  <span className="absolute -top-0.5 -right-0.5 sm:top-0.5 sm:right-0.5 flex items-center justify-center min-w-[15px] h-[15px] sm:min-w-[17px] sm:h-[17px] px-1 text-[9px] sm:text-[10px] font-bold text-[#24060D] bg-[#E4D1A3] rounded-full tabular-nums border border-[#FAF4E8]/80 shadow-2xs">
                     {cartCount}
                   </span>
                 )}
@@ -198,7 +198,7 @@ export const Header: React.FC = () => {
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-tablet-menu-drawer"
-                className="xl:hidden inline-flex items-center gap-1.5 p-1.5 sm:p-2 md:px-3 md:py-1.5 rounded-full border border-[#E4D1A3] dark:border-[#C6A15B]/45 bg-white/80 dark:bg-[#22211F] text-[#202020] dark:text-[#E8E2D6] hover:text-[#C6A15B] hover:border-[#C6A15B] hover:bg-white dark:hover:bg-[#2B2926] transition-all shadow-2xs focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C6A15B] cursor-pointer shrink-0"
+                className="xl:hidden inline-flex items-center gap-1.5 p-1.5 sm:p-2 md:px-3 md:py-1.5 rounded-full border border-[#C6A15B]/60 bg-[#1E050A]/55 text-[#FAF4E8] hover:text-[#E4D1A3] hover:border-[#E4D1A3] hover:bg-[#5E1624]/80 transition-all shadow-2xs focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E4D1A3] cursor-pointer shrink-0"
                 aria-label="Toggle mobile menu"
               >
                 {isMobileMenuOpen ? (
@@ -216,7 +216,7 @@ export const Header: React.FC = () => {
                 href={getWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden xl:inline-flex items-center gap-1.5 px-3.5 2xl:px-4 py-2 text-[11px] font-semibold tracking-[0.12em] uppercase text-[#171717] bg-gradient-to-r from-[#E4D1A3] via-[#D8BC7E] to-[#C6A15B] hover:from-[#C6A15B] hover:to-[#E4D1A3] transition-all rounded-full shadow-sm hover:shadow-md border border-[#C6A15B]/50 shrink-0"
+                className="hidden xl:inline-flex items-center gap-1.5 px-3.5 2xl:px-4 py-2 text-[11px] font-semibold tracking-[0.12em] uppercase text-[#24060D] bg-gradient-to-r from-[#E4D1A3] via-[#D8BC7E] to-[#C6A15B] hover:from-[#FAF4E8] hover:to-[#E4D1A3] transition-all rounded-full shadow-md hover:shadow-lg border border-[#FAF4E8]/40 shrink-0"
                 title="Direct WhatsApp Support"
               >
                 <MessageCircle className="w-3.5 h-3.5 fill-current" />

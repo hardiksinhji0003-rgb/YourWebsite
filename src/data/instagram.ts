@@ -1,6 +1,5 @@
 import { InstagramPost } from '../types';
 
-import igBoxImg from '../assets/images/ig_silver_box_display_1793634753716.jpg';
 import igTempleImg from '../assets/images/ig_silver_temple_pendant_1793634737834.jpg';
 
 export const INSTAGRAM_POSTS: InstagramPost[] = [
@@ -38,9 +37,9 @@ export const INSTAGRAM_POSTS: InstagramPost[] = [
   },
   {
     id: 'ig-5',
-    image: igBoxImg,
+    image: '/assets/aistudio/image_8b2bedd8.png',
     imagePosition: 'object-center',
-    caption: 'Heirloom pure 925 silver bangles and bespoke sapphire medallion resting in vintage green velvet. 🌿 #GujaratJewellers #Dahegam',
+    caption: 'Handcrafted Pure 925 Silver textured kada pair with red & green Meenakari bands and sparkling CZ clasp on crimson velvet. ✨ #SilverKada #GujaratOrna',
     likes: '812',
     url: 'https://www.instagram.com/gujaratorna/',
   },
